@@ -1,363 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Projects | Shanoor Verma</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fonts + Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    :root {
-      --bg: #020617;
-      --card: #0f172a;
-      --border: rgba(148, 163, 184, 0.4);
-      --text: #f9fafb;
-      --muted: #9ca3af;
-      --accent: #8b5cf6;
-      --accent2: #22d3ee;
-      --accent3: #06b6d4;
-    }
-
-    * { margin:0; padding:0; box-sizing:border-box; }
-
     body {
-      font-family:"Poppins",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-      background: radial-gradient(circle at top, #1f2933 0, #020617 40%, #020617 100%);
-      color:var(--text);
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      font-family: "Poppins", sans-serif;
+      color: #f9fafb; /* brighter text */
+      margin: 0;
+      padding: 0;
     }
 
-    a { color:inherit; text-decoration:none; }
-
-    /* NAVBAR (same vibe as other pages) */
-    .nav{
-      position:sticky;top:0;z-index:20;
-      background:linear-gradient(to bottom,rgba(2,6,23,0.95),rgba(2,6,23,0.4));
-      border-bottom:1px solid rgba(148,163,184,0.3);
-      backdrop-filter:blur(18px);
-    }
-    .nav-inner{
-      max-width:1080px;margin:0 auto;
-      padding:0.9rem 1.5rem;
-      display:flex;align-items:center;justify-content:space-between;
-    }
-    .nav-left{display:flex;gap:0.6rem;align-items:center;}
-    .nav-logo{
-      width:32px;height:32px;border-radius:999px;
-      background:radial-gradient(circle at 30% 0,#f97316,#a855f7 45%,#0ea5e9 100%);
-      box-shadow:0 0 24px rgba(129,140,248,0.7);
-    }
-    .nav-title{font-size:0.95rem;font-weight:600;letter-spacing:0.03em;}
-    .nav-subtitle{font-size:0.7rem;color:var(--muted);}
-    .nav-links{display:flex;gap:1.2rem;font-size:0.9rem;color:var(--muted);}
-    .nav-links a{position:relative;padding-bottom:2px;transition:color 0.2s ease;}
-    .nav-links a::after{
-      content:"";position:absolute;left:0;bottom:0;width:0;height:2px;
-      background:linear-gradient(90deg,#8b5cf6,#22d3ee);border-radius:999px;
-      transition:width 0.2s ease;
-    }
-    .nav-links a:hover{color:var(--text);}
-    .nav-links a:hover::after{width:100%;}
-
-    .page{max-width:1080px;margin:0 auto;padding:2rem 1.5rem 3rem;}
-    .section-title{font-size:1.9rem;font-weight:600;margin-bottom:0.4rem;}
-    .section-sub{font-size:0.9rem;color:var(--muted);margin-bottom:1.6rem;max-width:640px;}
-
-    /* PROJECT GRID */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:1.6rem;
+    header {
+      padding: 22px 20px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #f9fafb;
+      background: rgba(15,23,42,0.96);
+      border-bottom: 1px solid rgba(148,163,184,0.35);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .project-card{
-      position:relative;
-      border-radius:22px;
-      overflow:hidden;
-      background:#000;
-      min-height:260px;
-      box-shadow:0 18px 45px rgba(15,23,42,0.9);
-      transform:translateY(10px);
-      opacity:0;
-      transition:
-        transform 0.5s cubic-bezier(0.19, 1, 0.22, 1),
-        box-shadow 0.4s ease,
-        opacity 0.4s ease;
+    .subtitle {
+      font-size: 0.85rem;
+      color: #9ca3af;
+      text-align: center;
+      margin-top: 6px;
+      margin-bottom: 0;
     }
 
-    .project-card.visible{
-      transform:translateY(0);
-      opacity:1;
+    .projects-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
     }
 
-    .project-bg{
-      position:absolute;
-      inset:0;
-      background-size:cover;
-      background-position:center;
-      filter:brightness(0.7);
-      transform:scale(1.03);
-      transition:transform 0.6s ease, filter 0.4s ease;
+    .project-card {
+      background: radial-gradient(circle at 0 0, rgba(148,163,184,0.18), transparent 60%),
+                  rgba(15,23,42,0.96);
+      border: 1px solid rgba(148,163,184,0.45);
+      border-radius: 16px;
+      padding: 20px 18px 18px;
+      transition: 0.25s ease;
+      box-shadow: 0 14px 30px rgba(15,23,42,0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .project-overlay{
-      position:absolute;
-      inset:0;
-      background:linear-gradient(
-        120deg,
-        rgba(56,189,248,0.40),
-        rgba(139,92,246,0.75),
-        rgba(249,115,22,0.70)
-      );
-      mix-blend-mode:soft-light;
-      opacity:0.9;
-      transition:opacity 0.4s ease;
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(15,23,42,1);
+      border-color: rgba(96,165,250,0.9);
     }
 
-    .project-inner{
-      position:relative;
-      z-index:2;
-      height:100%;
-      padding:1.6rem 1.6rem 1.5rem;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      color:#0b1020;
+    .project-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
     }
 
-    .project-title{
-      font-size:1.05rem;
-      font-weight:600;
-      margin-bottom:0.3rem;
+    .project-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #a855f7, #22d3ee 60%, #f97316 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 18px rgba(56,189,248,0.8);
+      flex-shrink: 0;
     }
 
-    .project-tagline{
-      font-size:0.8rem;
-      text-transform:uppercase;
-      letter-spacing:0.18em;
-      margin-bottom:0.6rem;
+    .project-icon i {
+      color: #020617;
+      font-size: 1.2rem;
     }
 
-    .project-desc{
-      font-size:0.86rem;
-      color:#052e16;
-      max-width:90%;
-      margin-bottom:0.9rem;
+    .project-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0;
+      color: #f9fafb; /* bright */
     }
 
-    .project-footer{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:0.7rem;
+    .project-tagline {
+      font-size: 0.8rem;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
     }
 
-    .project-chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:0.4rem;
+    .project-desc {
+      font-size: 0.95rem;
+      color: #e5e7eb; /* brighter */
+      line-height: 1.6;
+      margin-top: 4px;
+      margin-bottom: 8px;
     }
 
-    .project-chip{
-      font-size:0.72rem;
-      padding:0.2rem 0.6rem;
-      border-radius:999px;
-      border:1px solid rgba(15,23,42,0.6);
-      background:rgba(248,250,252,0.8);
-      color:#020617;
+    .project-meta {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 8px;
     }
 
-    .project-link{
-      width:36px;
-      height:36px;
-      border-radius:999px;
-      border:none;
-      background:#f9fafb;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      box-shadow:0 8px 22px rgba(15,23,42,0.6);
-      transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      background: linear-gradient(120deg, #9333ea, #3b82f6);
+      color: white;
+      text-decoration: none;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-top: auto;
+      align-self: flex-start;
+      transition: 0.22s ease;
+      box-shadow: 0 10px 25px rgba(15,23,42,0.9);
     }
 
-    .project-link svg{
-      width:16px;height:16px;
-      color:#be123c;
+    .project-link i {
+      font-size: 0.9rem;
     }
 
-    /* HOVER EFFECTS */
-    .project-card:hover .project-bg{
-      transform:scale(1.08);
-      filter:brightness(0.9);
-    }
-    .project-card:hover .project-overlay{
-      opacity:1;
-    }
-    .project-card:hover{
-      box-shadow:0 24px 60px rgba(15,23,42,1);
-      transform:translateY(-6px);
-    }
-    .project-card:hover .project-link{
-      transform:translateY(-1px) scale(1.05);
-      background:#fee2e2;
-      box-shadow:0 10px 26px rgba(127,29,29,0.4);
+    .project-link:hover {
+      opacity: 0.9;
+      transform: translateY(-1px) scale(1.02);
     }
 
-    @media(max-width:640px){
-      .nav-inner{padding-inline:1rem;}
-      .page{padding-inline:1rem;}
+    @media (max-width: 600px) {
+      header {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
-  <!-- NAV -->
-  <header class="nav">
-    <div class="nav-inner">
-      <div class="nav-left">
-        <div class="nav-logo"></div>
-        <div>
-          <div class="nav-title">Shanoor Verma</div>
-          <div class="nav-subtitle">Software Engineer · AI/ML · Cloud · Cybersecurity</div>
-        </div>
+
+<header>
+  My Projects
+  <p class="subtitle">Selected work in AI, ML, secure systems & creative tooling.</p>
+</header>
+
+<div class="projects-container">
+
+  <!-- Project 1 -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon">
+        <i class="fa-solid fa-brain"></i>
       </div>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="connect.html">Connect</a>
-        <a href="connections.html">Connections</a>
-      </nav>
+      <div>
+        <div class="project-title">Physics-Informed Neural Operators</div>
+        <div class="project-tagline">PDE · SURROGATE MODELING</div>
+      </div>
     </div>
-  </header>
+    <div class="project-desc">
+      Surrogate modeling using PINO, DeepONet, and NVIDIA Modulus to solve PDE-based Darcy flow with physics constraints,
+      enabling faster inference while respecting governing equations.
+    </div>
+    <div class="project-meta">
+      Python · NVIDIA Modulus · PIML · Neural Operators
+    </div>
+    <a class="project-link" href="https://github.com/shanoor12v/PINO-DarcyFlow" target="_blank" rel="noopener noreferrer">
+      <span>View Project</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
 
-  <main class="page">
-    <h1 class="section-title">Projects</h1>
-    <p class="section-sub">
-      A few examples of systems I’ve built and explored around GenAI, physics-informed ML,
-      real-time platforms, and cloud automation.
-    </p>
+  <!-- Project 2 -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div>
+        <div class="project-title">Prompt Classification using PPO + RoBERTa</div>
+        <div class="project-tagline">NLP · REINFORCEMENT LEARNING</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      RL fine-tuning on RoBERTa using PPO with HuggingFace TRL to classify and flag sensitive or risky prompts, acting as
+      a safety layer around LLMs.
+    </div>
+    <div class="project-meta">
+      Python · HuggingFace TRL · RoBERTa · PPO
+    </div>
+    <a class="project-link" href="https://github.com/shanoor12v/Prompt-Classifier-PPO" target="_blank" rel="noopener noreferrer">
+      <span>View Project</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
 
-    <section class="projects-grid">
-      <!-- 1. Prompt Classification -->
-      <article class="project-card">
-        <div class="project-bg" style="background-image:url('images/proj-prompt.jpg');"></div>
-        <div class="project-overlay"></div>
-        <div class="project-inner">
-          <div class="project-tagline">GenAI · Reinforcement Learning</div>
-          <h2 class="project-title">Performant Prompt Classification</h2>
-          <p class="project-desc">
-            PPO-based classifier that detects “red-flag” prompts while keeping LLM quality high,
-            built with BERT, OpenAI APIs, and PyTorch on GPU.
-          </p>
-          <div class="project-footer">
-            <div class="project-chips">
-              <span class="project-chip">Python</span>
-              <span class="project-chip">BERT</span>
-              <span class="project-chip">PPO · RL</span>
-            </div>
-            <button class="project-link" title="View details (coming soon)">
-              <svg viewBox="0 0 20 20" fill="none">
-                <path d="M5 15L15 5M9 5H15V11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </article>
+  <!-- Project 3 -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon">
+        <i class="fa-solid fa-ship"></i>
+      </div>
+      <div>
+        <div class="project-title">YOLOv5 Ship Detection</div>
+        <div class="project-tagline">COMPUTER VISION · TRACKING</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      Custom YOLOv5 model fine-tuned to detect ships, estimate direction and infer relative motion using domain-specific
+      imagery and tracking logic.
+    </div>
+    <div class="project-meta">
+      Python · YOLOv5 · OpenCV · Object Detection
+    </div>
+    <a class="project-link" href="https://github.com/shanoor12v/Ship-Detection-YOLOv5" target="_blank" rel="noopener noreferrer">
+      <span>View Project</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
 
-      <!-- 2. PIML / Modulus -->
-      <article class="project-card">
-        <div class="project-bg" style="background-image:url('images/proj-piml.jpg');"></div>
-        <div class="project-overlay"></div>
-        <div class="project-inner">
-          <div class="project-tagline">Physics-Informed ML</div>
-          <h2 class="project-title">NVIDIA Modulus · PINNs & Neural Operators</h2>
-          <p class="project-desc">
-            Physics-constrained surrogates for PDE systems using Modulus, CUDA, and PyTorch,
-            reducing data needs while enforcing conservation laws.
-          </p>
-          <div class="project-footer">
-            <div class="project-chips">
-              <span class="project-chip">NVIDIA Modulus</span>
-              <span class="project-chip">CUDA</span>
-              <span class="project-chip">PINNs</span>
-            </div>
-            <button class="project-link" title="View details (coming soon)">
-              <svg viewBox="0 0 20 20" fill="none">
-                <path d="M5 15L15 5M9 5H15V11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </article>
+  <!-- Project 4 -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-icon">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+      </div>
+      <div>
+        <div class="project-title">The Brand Craft – Social Media Engine</div>
+        <div class="project-tagline">CREATIVE TOOLS · AUTOMATION</div>
+      </div>
+    </div>
+    <div class="project-desc">
+      A lightweight internal tooling system for brand content planning – carousels, color palettes, hooks, and auto-story
+      scaffolding built with HTML/CSS/JS.
+    </div>
+    <div class="project-meta">
+      HTML · CSS · JavaScript · Content Systems
+    </div>
+    <a class="project-link" href="https://github.com/shanoor12v/TheBrandCraft" target="_blank" rel="noopener noreferrer">
+      <span>View Project</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+  </div>
 
-      <!-- 3. Travel platform -->
-      <article class="project-card">
-        <div class="project-bg" style="background-image:url('images/proj-travel.jpg');"></div>
-        <div class="project-overlay"></div>
-        <div class="project-inner">
-          <div class="project-tagline">Real-time Web Platform</div>
-          <h2 class="project-title">SR Travel – Live Flight Pricing</h2>
-          <p class="project-desc">
-            Full-stack TypeScript platform using Amadeus, Sabre, and Skyscanner APIs with WebSockets
-            for live pricing and AI chatbot support.
-          </p>
-          <div class="project-footer">
-            <div class="project-chips">
-              <span class="project-chip">TypeScript · React</span>
-              <span class="project-chip">Node.js</span>
-              <span class="project-chip">Amadeus · Sabre</span>
-            </div>
-            <button class="project-link" title="View details (coming soon)">
-              <svg viewBox="0 0 20 20" fill="none">
-                <path d="M5 15L15 5M9 5H15V11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </article>
+</div>
 
-      <!-- 4. Cloud / Terraform -->
-      <article class="project-card">
-        <div class="project-bg" style="background-image:url('images/proj-cloud.jpg');"></div>
-        <div class="project-overlay"></div>
-        <div class="project-inner">
-          <div class="project-tagline">Cloud · DevOps</div>
-          <h2 class="project-title">AWS Infrastructure & Terraform Experiments</h2>
-          <p class="project-desc">
-            IaC blueprints for AWS (EC2, IAM, VPC, Lambda), Docker, and CI/CD to spin up secure,
-            reproducible environments for apps and ML workloads.
-          </p>
-          <div class="project-footer">
-            <div class="project-chips">
-              <span class="project-chip">AWS</span>
-              <span class="project-chip">Terraform</span>
-              <span class="project-chip">Docker · CI/CD</span>
-            </div>
-            <button class="project-link" title="View details (coming soon)">
-              <svg viewBox="0 0 20 20" fill="none">
-                <path d="M5 15L15 5M9 5H15V11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-      </article>
-    </section>
-  </main>
-
-  <script>
-    // simple scroll-in animation like Hailee's sections
-    const cards = document.querySelectorAll(".project-card");
-    const obs = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            obs.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.18 }
-    );
-    cards.forEach(c => obs.observe(c));
-  </script>
 </body>
 </html>
