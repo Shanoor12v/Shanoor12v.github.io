@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shanoor Verma | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #8b5cf6;
+      --accent-soft: rgba(139, 92, 246, 0.12);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: #0f172a;
+      --border: rgba(148, 163, 184, 0.3);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2933 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Navbar */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.9), rgba(2,6,23,0.4));
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 45%, #0ea5e9 100%);
+      box-shadow: 0 0 30px rgba(129, 140, 248, 0.6);
+    }
+
+    .nav-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.8rem 1.5rem 3rem;
+    }
+
+    section {
+      padding: 3.2rem 0;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.4rem;
+      align-items: center;
+      min-height: calc(100vh - 70px);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3vw + 1rem, 3.1rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #a855f7, #22d3ee, #f97316);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 0.96rem;
+      color: var(--muted);
+      max-width: 32rem;
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .tag-pill {
+      font-size: 0.76rem;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: radial-gradient(circle at top left, rgba(148,163,184,0.18), transparent 60%);
+      color: #e5e7eb;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .btn-solid,
+    .btn-ghost {
+      font-size: 0.9rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-solid {
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 40%, #22d3ee 100%);
+      box-shadow: 0 12px 30px rgba(15,23,42,0.9);
+      color: #0b1020;
+      font-weight: 600;
+    }
+
+    .btn-solid:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(15,23,42,1);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.7);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,0.95);
+      transform: translateY(-1px);
+    }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 360px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148,163,184,0.4);
+      background: radial-gradient(circle at 20% 0, rgba(148,163,184,0.16), transparent 50%),
+                  linear-gradient(145deg, rgba(15,23,42,0.9), rgba(15,23,42,1));
+      box-shadow: var(--shadow-soft);
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-inner {
+      border-radius: calc(var(--radius-xl) - 8px);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1.3rem;
+      background: radial-gradient(circle at top right, rgba(129,140,248,0.24), transparent 60%);
+    }
+
+    .hero-chip {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-role {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-meta span {
+      font-size: 0.7rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.85);
+      border: 1px solid rgba(148,163,184,0.5);
+      color: #e5e7eb;
+    }
+
+    .hero-timeline {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-blurb {
+      font-size: 0.78rem;
+      color: #e5e7eb;
+      line-height: 1.5;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .hero-badges span {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(129,140,248,0.6);
+    }
+
+    /* Section cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(148,163,184,0.12), transparent 60%),
+                  rgba(15,23,42,0.92);
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.75);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .skill-pill {
+      font-size: 0.75rem;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      color: #e5e7eb;
+    }
+
+    /* Experience & projects */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .timeline-item {
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.98);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(129,140,248,0.24), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .timeline-item:hover::before {
+      opacity: 1;
+    }
+
+    .timeline-title {
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .timeline-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-body {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.5;
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
+    }
+
+    /* Contact */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.3rem;
+      align-items: flex-start;
+    }
+
+    .contact-main {
+      flex: 2;
+    }
+
+    .contact-meta {
+      flex: 1;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+    }
+
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+    }
+
+    .contact-links a:hover {
+      color: var(--text);
+    }
+
+    .contact-links i {
+      font-size: 0.9rem;
+    }
+
+    footer {
+      padding-top: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid rgba(15,23,42,0.9);
+      margin-top: 2rem;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+        min-height: auto;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .nav-inner {
+        padding-inline: 1rem;
+      }
+
+      .page {
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-card {
+        max-width: 100%;
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-logo"></div>
+        <div>
+          <div class="nav-title">Shanoor Verma</div>
+          <div style="font-size: 0.7rem; color: var(--muted);">Software Engineer · AI/ML · Cloud · Cyber</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left reveal">
+        <div class="section-label">Portfolio</div>
+        <h1 class="hero-title">
+          Building <span class="hero-highlight">secure, intelligent</span><br /> systems end-to-end.
+        </h1>
+        <p class="hero-sub">
+          I’m a software engineer with experience across AI/ML, cloud, and cybersecurity—
+          working on everything from physics-informed ML and RAG pipelines to secure client-server
+          applications and automation in the cloud.
+        </p>
+
+        <div class="hero-tags">
+          <span class="tag-pill">AI & ML</span>
+          <span class="tag-pill">Cloud & Terraform</span>
+          <span class="tag-pill">Cybersecurity</span>
+          <span class="tag-pill">DevOps & Automation</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn-solid">
+            View Projects <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn-ghost">
+            Let’s connect <i class="fa-regular fa-paper-plane"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-chip">Currently</div>
+            <div class="hero-role">Software Engineer / Emerging Tech</div>
+            <div class="hero-meta">
+              <span>AI & ML</span>
+              <span>Terraform & Cloud</span>
+              <span>Cybersecurity</span>
+            </div>
+            <p class="hero-timeline">
+              Exploring early-career roles where I can combine <strong>ML, cloud, and secure systems</strong>
+              to solve real problems.
+            </p>
+            <p class="hero-blurb">
+              Recent work includes physics-informed ML (NVIDIA Modulus), RAG & NLP,
+              cloud infrastructure research, and security-driven consulting.
+            </p>
+            <div class="hero-badges">
+              <span>Python · C++ · C#</span>
+              <span>Azure · AWS</span>
+              <span>Terraform · DevOps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT & SKILLS -->
+    <section id="about" class="reveal">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Who I am, in short.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>About me</h3>
+          <p>
+            I’m Shanoor Verma, a computer engineering graduate with a strong focus on
+            <strong>AI/ML, cloud infrastructure, and cybersecurity</strong>.
+            I enjoy working on problems that sit at the intersection of intelligent systems,
+            secure design, and performance.
+          </p>
+          <p style="margin-top: 0.8rem;">
+            I’ve worked across research, consulting, and engineering environments—giving me a blend of
+            deep technical skills and an understanding of how technology supports real business outcomes.
+          </p>
+        </div>
+        <div class="card" id="skills">
+          <h3>Core skills & tools</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">Python · PyTorch</span>
+            <span class="skill-pill">Machine Learning · NLP · RAG</span>
+            <span class="skill-pill">Terraform (in progress)</span>
+            <span class="skill-pill">Azure · AWS</span>
+            <span class="skill-pill">Docker · Linux</span>
+            <span class="skill-pill">C++ · C#</span>
+            <span class="skill-pill">Cybersecurity & Risk</span>
+            <span class="skill-pill">Digital Forensics</span>
+            <span class="skill-pill">Git · GitHub · CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Where I’ve been useful so far.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Professional experience</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-title">Software / Research Roles</div>
+              <div class="timeline-meta">AI/ML · PIML · Secure Systems</div>
+              <div class="timeline-body">
+                Worked on physics-informed ML (PINNs, Neural Operators) using
+                NVIDIA Modulus, CUDA, and Python; explored digital twins and simulation-driven modeling.
+              </div>
+              <div class="chips-row">
+                <span class="chip">Physics-Informed ML</span>
+                <span class="chip">NVIDIA Modulus</span>
+                <span class="chip">Docker · Linux</span>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Cybersecurity Risk & Advisory</div>
+              <div class="timeline-meta">CMMC · NIST · SOC · SOX</div>
+              <div class="timeline-body">
+                Supported cybersecurity risk assessments, compliance reviews, and internal audits
+                leveraging NIST frameworks, CMMC controls, and AI-related advisory for higher-ed clients.
+              </div>
+              <div class="chips-row">
+                <span class="chip">NIST · CMMC</span>
+                <span class="chip">Risk & Controls</span>
+                <span class="chip">Governance</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>What I’m exploring now</h3>
+          <p>
+            I’m actively deepening my experience with
+            <strong>Terraform and cloud-native architectures</strong>,
+            building infrastructure-as-code for realistic environments.
+          </p>
+          <p style="margin-top: 0.6rem;">
+            Parallel to that, I’m experimenting with <strong>RAG pipelines</strong>,
+            <strong>prompt classification with RL (PPO)</strong>, and scalable ML deployments,
+            aiming to ship models that are both robust and production-ready.
+          </p>
+          <div class="chips-row" style="margin-top: 0.7rem;">
+            <span class="chip">Terraform (active project)</span>
+            <span class="chip">Cloud Infrastructure</span>
+            <span class="chip">RAG · NLP</span>
+            <span class="chip">MLOps mindset</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="reveal">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">Things I’ve built & broken (then fixed).</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Physics-Informed ML & Digital Twins</h3>
+          <p>
+            Built physics-informed models using PINNs and Neural Operators (PINO, DeepONet) for PDE-based
+            systems, integrating domain knowledge from simulations into ML models for better accuracy and
+            data efficiency.
+          </p>
+          <div class="chips-row" style="margin-top: 0.6rem;">
+            <span class="chip">PINO · DeepONet</span>
+            <span class="chip">NVIDIA Modulus</span>
+            <span class="chip">Surrogate Modeling</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Prompt Classification + RL (Active)</h3>
+          <p>
+            Designing a prompt classification system using a RoBERTa backbone and PPO-based reinforcement
+            learning (via TRL) to detect and steer away from red-flag prompts, improving safety and
+            alignment of LLM interactions.
+          </p>
+          <div class="chips-row" style="margin-top: 0.6rem;">
+            <span class="chip">RoBERTa</span>
+            <span class="chip">Hugging Face TRL</span>
+            <span class="chip">PPO · RL</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Cloud & Terraform Research</h3>
+          <p>
+            Ongoing work in defining reusable infrastructure patterns with Terraform for cloud workloads,
+            focusing on reproducible environments, security baselines, and pipelines that support ML
+            experimentation.
+          </p>
+          <div class="chips-row" style="margin-top: 0.6rem;">
+            <span class="chip">Terraform</span>
+            <span class="chip">Azure / AWS</span>
+            <span class="chip">IaC</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Digital Forensics & Registry Analysis</h3>
+          <p>
+            Hands-on labs with Windows Registry forensics, memory analysis, and volatility tooling to
+            reconstruct system activity, supporting a deeper understanding of how systems fail—and how
+            to secure them.
+          </p>
+          <div class="chips-row" style="margin-top: 0.6rem;">
+            <span class="chip">Volatility</span>
+            <span class="chip">Windows Registry</span>
+            <span class="chip">Incident Analysis</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let’s talk about what I can build for you.</h2>
+      <div class="contact-row">
+        <div class="card contact-main">
+          <h3>Open to early-career roles & conversations</h3>
+          <p style="font-size: 0.88rem; color: var(--muted); margin-top: 0.5rem;">
+            I’m actively exploring early-career roles where I can contribute to
+            <strong>AI/ML, cloud infrastructure, and secure systems engineering</strong>.
+            If you think my background might be a fit for your team, I’d love to connect.
+          </p>
+          <p style="font-size: 0.86rem; color: var(--muted); margin-top: 0.7rem;">
+            The fastest way to reach me is via email or LinkedIn. I’m happy to share more details,
+            walk through projects, or simply exchange ideas.
+          </p>
+        </div>
+        <div class="card contact-meta">
+          <h3>Where to find me</h3>
+          <div class="contact-links" style="margin-top: 0.8rem;">
+            <a href="mailto:your.email@example.com" target="_blank" rel="noreferrer">
+              <i class="fa-regular fa-envelope"></i>
+              <span>Email</span>
+            </a>
+            <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/your-github" target="_blank" rel="noreferrer">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        © <span id="year"></span> · Designed & built by Shanoor Verma
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Scroll reveal with IntersectionObserver
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
