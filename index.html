@@ -155,6 +155,22 @@
       gap: 2.4rem;
       align-items: center;
       min-height: calc(100vh - 80px);
+      position: relative;
+    }
+
+    .hero-name {
+      font-size: 0.85rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name span {
+      background: linear-gradient(120deg, #a855f7, #22d3ee, #f97316);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     .hero-title {
@@ -243,89 +259,29 @@
       justify-content: center;
     }
 
-    .hero-card {
+    /* BIG HERO PHOTO */
+    .hero-photo-frame {
       width: 100%;
       max-width: 360px;
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(148,163,184,0.4);
-      background: radial-gradient(circle at 20% 0, rgba(148,163,184,0.16), transparent 50%),
-                  linear-gradient(145deg, rgba(15,23,42,0.9), rgba(15,23,42,1));
-      box-shadow: var(--shadow-soft);
-      padding: 1rem;
-      position: relative;
+      aspect-ratio: 3 / 4;
+      border-radius: 26px;
       overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: radial-gradient(circle at 20% 0, rgba(148,163,184,0.18), transparent 55%);
+      box-shadow: 0 22px 50px rgba(15,23,42,0.95);
     }
 
-    .hero-card-inner {
-      border-radius: calc(var(--radius-xl) - 8px);
-      border: 1px solid rgba(148,163,184,0.4);
-      padding: 1.3rem;
-      background: radial-gradient(circle at top right, rgba(129,140,248,0.24), transparent 60%);
-    }
-
-    .hero-chip {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--muted);
-      margin-bottom: 0.6rem;
-    }
-
-    .hero-role {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .hero-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.6rem;
-    }
-
-    .hero-badges span {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(129,140,248,0.6);
-    }
-
-    /* HERO PROFILE AVATAR */
-    .hero-avatar-row {
-      margin: 0.6rem 0 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .hero-avatar {
-      width: 56px;
-      height: 56px;
-      border-radius: 999px;
-      overflow: hidden;
-      border: 2px solid rgba(148,163,184,0.9);
-      box-shadow: 0 0 18px rgba(129,140,248,0.85);
-    }
-
-    .hero-avatar img {
+    .hero-photo {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      transform: scale(1.02);
+      transition: transform 0.4s ease-out;
     }
 
-    .hero-avatar-text {
-      font-size: 0.78rem;
-      color: var(--muted);
-      line-height: 1.3;
+    .hero-photo-frame:hover .hero-photo {
+      transform: scale(1.06);
     }
 
     /* CARDS / GRIDS */
@@ -602,42 +558,118 @@
       margin-top: 2rem;
     }
 
-    /* SCROLL REVEAL */
+    /* SCROLL REVEAL (Hailee-style) */
     .reveal {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(22px) scale(0.98);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
-    .reveal.visible {
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-26px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(26px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .reveal.visible,
+    .reveal-left.visible,
+    .reveal-right.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateX(0) translateY(0) scale(1);
     }
 
-.hero-photo-frame {
-  width: 100%;
-  max-width: 360px;
-  aspect-ratio: 3 / 4;
-  border-radius: 26px;
-  overflow: hidden;
-  border: 1px solid rgba(148,163,184,0.6);
-  background: radial-gradient(circle at 20% 0, rgba(148,163,184,0.18), transparent 55%);
-  box-shadow: 0 22px 50px rgba(15,23,42,0.95);
-}
+    /* HERO SCROLL INDICATOR (bottom center) */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      pointer-events: none;
+    }
 
-.hero-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform: scale(1.02);
-  transition: transform 0.4s ease-out;
-}
+    .scroll-text {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.7rem;
+    }
 
-.hero-photo-frame:hover .hero-photo {
-  transform: scale(1.06);
-}
+    .scroll-line {
+      width: 70px;
+      height: 1px;
+      background: rgba(148,163,184,0.35);
+      position: relative;
+      overflow: hidden;
+      border-radius: 999px;
+    }
 
+    .scroll-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(120deg, #a855f7, #22d3ee);
+      top: 50%;
+      transform: translate(-50%, -50%);
+      left: 0%;
+      animation: scrollDot 2s infinite ease-in-out;
+      box-shadow: 0 0 10px rgba(56,189,248,0.9);
+    }
+
+    @keyframes scrollDot {
+      0% { left: 0%; opacity: 0; }
+      15% { opacity: 1; }
+      50% { left: 100%; opacity: 1; }
+      85% { opacity: 1; }
+      100% { left: 0%; opacity: 0; }
+    }
+
+    /* FIXED SCROLL NAV (right side like Hailee) */
+    .scroll-nav {
+      position: fixed;
+      top: 50%;
+      right: 2.5rem;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      z-index: 35;
+      font-size: 0.75rem;
+    }
+
+    .scroll-nav a {
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.8);
+      border: 1px solid rgba(148,163,184,0.45);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .scroll-nav a:hover {
+      transform: translateX(-2px);
+      border-color: rgba(148,163,184,0.9);
+    }
+
+    .scroll-nav a.active {
+      background: linear-gradient(135deg, #a855f7, #22d3ee);
+      color: #020617;
+      border-color: transparent;
+      box-shadow: 0 10px 20px rgba(15,23,42,0.9);
+    }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -671,6 +703,10 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
+      .scroll-indicator {
+        display: none;
+      }
     }
 
     @media (max-width: 640px) {
@@ -680,6 +716,10 @@
 
       .grid-2 {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .scroll-nav {
+        display: none;
       }
     }
   </style>
@@ -704,50 +744,67 @@
     </div>
   </header>
 
+  <!-- SCROLL NAV (right side) -->
+  <div class="scroll-nav">
+    <a href="#about" data-target="about">About</a>
+    <a href="#skills" data-target="skills">Skills</a>
+    <a href="#experience" data-target="experience">Experience</a>
+    <a href="#connections-overview" data-target="connections-overview">Connects</a>
+  </div>
+
   <main class="page">
     <!-- HERO -->
     <section class="hero">
-  <div class="hero-left reveal">
-    <div class="section-label">Portfolio</div>
-    <h1 class="hero-title">
-      Engineering <span class="hero-highlight">intelligent, secure</span><br /> software systems.
-    </h1>
-    <p class="hero-sub">
-      I’m a U.S. citizen Software Engineer based in Newport News, VA, specializing in modeling & simulation,
-      AI/ML, and cloud-native systems. I’ve worked on U.S. Navy aircraft carrier simulations, physics-informed
-      ML research, real-time travel platforms, and chatbots powered by modern AI.
-    </p>
+      <div class="hero-left reveal">
+        <div class="hero-name"><span>SHANOOR</span> VERMA</div>
+        <div class="section-label">Portfolio</div>
+        <h1 class="hero-title">
+          Engineering <span class="hero-highlight">intelligent, secure</span><br /> software systems.
+        </h1>
+        <p class="hero-sub">
+          I’m a U.S. citizen Software Engineer based in Newport News, VA, specializing in modeling & simulation,
+          AI/ML, and cloud-native systems. I’ve worked on U.S. Navy aircraft carrier simulations, physics-informed
+          ML research, real-time travel platforms, and chatbots powered by modern AI.
+        </p>
 
-    <div class="hero-tags">
-      <span class="tag-pill">Software Engineering</span>
-      <span class="tag-pill">AI / ML / PIML</span>
-      <span class="tag-pill">Cloud & DevOps</span>
-      <span class="tag-pill">Cyber & Secure Systems</span>
-    </div>
+        <div class="hero-tags">
+          <span class="tag-pill">Software Engineering</span>
+          <span class="tag-pill">AI / ML / PIML</span>
+          <span class="tag-pill">Cloud & DevOps</span>
+          <span class="tag-pill">Cyber & Secure Systems</span>
+        </div>
 
-    <div class="hero-buttons">
-      <a href="projects.html" class="btn-solid">
-        View Projects <i class="fa-solid fa-arrow-right"></i>
-      </a>
-      <a href="connect.html" class="btn-ghost">
-        Let’s connect <i class="fa-regular fa-paper-plane"></i>
-      </a>
-    </div>
-  </div>
+        <div class="hero-buttons">
+          <a href="projects.html" class="btn-solid">
+            View Projects <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="connect.html" class="btn-ghost">
+            Let’s connect <i class="fa-regular fa-paper-plane"></i>
+          </a>
+        </div>
+      </div>
 
-  <div class="hero-right reveal-right">
-    <div class="hero-photo-frame">
-      <img src="profile.jpg" alt="Shanoor Verma" class="hero-photo" />
-    </div>
-  </div>
-</section>
+      <div class="hero-right reveal-right">
+        <div class="hero-photo-frame">
+          <img src="profile.jpg" alt="Shanoor Verma" class="hero-photo" />
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-indicator">
+        <span class="scroll-text">Scroll</span>
+        <div class="scroll-line">
+          <div class="scroll-dot"></div>
+        </div>
+      </div>
+    </section>
 
     <!-- ABOUT + EDUCATION -->
-    <section id="about" class="reveal">
-      <div class="section-label">About</div>
-      <h2 class="section-title">Who I am.</h2>
+    <section id="about">
+      <div class="section-label reveal">About</div>
+      <h2 class="section-title reveal">Who I am.</h2>
       <div class="grid-2">
-        <div class="card">
+        <div class="card reveal-left">
           <h3>About me</h3>
           <p>
             I’m a Computer Engineering graduate from Virginia Tech with a concentration in
@@ -760,7 +817,7 @@
             business workflows.
           </p>
         </div>
-        <div class="card">
+        <div class="card reveal-right">
           <h3>Education</h3>
           <p><strong>Virginia Tech, College of Engineering</strong></p>
           <p style="font-size: 0.85rem; margin-top: 0.25rem;">
@@ -778,11 +835,11 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="reveal">
-      <div class="section-label">Skills</div>
-      <h2 class="section-title">What I work with.</h2>
+    <section id="skills">
+      <div class="section-label reveal">Skills</div>
+      <h2 class="section-title reveal">What I work with.</h2>
       <div class="grid-2">
-        <div class="card">
+        <div class="card reveal-left">
           <h3>Languages & Core</h3>
           <div class="skills-grid">
             <span class="skill-pill">Python</span>
@@ -794,7 +851,7 @@
             <span class="skill-pill">Data Structures & Algorithms</span>
           </div>
         </div>
-        <div class="card">
+        <div class="card reveal-right">
           <h3>Frameworks, ML & Cloud</h3>
           <div class="skills-grid">
             <span class="skill-pill">.NET Framework</span>
@@ -827,7 +884,7 @@
         <!-- Experience items -->
         <div class="timeline-list" id="expList">
           <!-- HII -->
-          <article class="timeline-item" data-index="0">
+          <article class="timeline-item reveal" data-index="0">
             <div class="timeline-title">Software Engineer 1 – HII Ingalls Shipbuilding</div>
             <div class="timeline-meta">Newport News, VA · 08/2025 – Present</div>
             <div class="timeline-body">
@@ -847,7 +904,7 @@
           </article>
 
           <!-- SR Travel Agency -->
-          <article class="timeline-item" data-index="1">
+          <article class="timeline-item reveal" data-index="1">
             <div class="timeline-title">Software Engineer Intern – SR. Travel Agency</div>
             <div class="timeline-meta">India · 12/2024 – 07/2025</div>
             <div class="timeline-body">
@@ -869,7 +926,7 @@
           </article>
 
           <!-- Hume Center -->
-          <article class="timeline-item" data-index="2">
+          <article class="timeline-item reveal" data-index="2">
             <div class="timeline-title">Machine Learning Researching Intern – Hume Center</div>
             <div class="timeline-meta">Blacksburg, VA · 05/2024 – 08/2024</div>
             <div class="timeline-body">
@@ -889,7 +946,7 @@
           </article>
 
           <!-- Kastom Cloud -->
-          <article class="timeline-item" data-index="3">
+          <article class="timeline-item reveal" data-index="3">
             <div class="timeline-title">Software Engineer Intern – Kastom Cloud</div>
             <div class="timeline-meta">San Francisco, CA (Remote) · 03/2024 – 05/2024</div>
             <div class="timeline-body">
@@ -908,7 +965,7 @@
           </article>
 
           <!-- Additional experience (combined) -->
-          <article class="timeline-item" data-index="4">
+          <article class="timeline-item reveal" data-index="4">
             <div class="timeline-title">Additional Experience</div>
             <div class="timeline-meta">Virginia Tech & SR. Travels</div>
             <div class="timeline-body">
@@ -937,11 +994,11 @@
     </section>
 
     <!-- CONNECTIONS / REVIEWS SECTION -->
-    <section id="connections-overview" class="reveal">
-      <div class="section-label">Connections</div>
-      <h2 class="section-title">Reviews & kind words.</h2>
+    <section id="connections-overview">
+      <div class="section-label reveal">Connections</div>
+      <h2 class="section-title reveal">Reviews & kind words.</h2>
 
-      <div class="reviews-wrapper">
+      <div class="reviews-wrapper reveal">
         <div class="reviews-header">
           <p>
             Feedback from managers, teammates, and collaborators I’ve worked with.
@@ -996,20 +1053,22 @@
   </main>
 
   <script>
-    // Scroll reveal
-    const observer = new IntersectionObserver(
+    // Scroll reveal (Hailee-style)
+    const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
+            revealObserver.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.16 }
+      { threshold: 0.18 }
     );
 
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    document
+      .querySelectorAll(".reveal, .reveal-left, .reveal-right")
+      .forEach((el) => revealObserver.observe(el));
 
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -1127,6 +1186,33 @@
 
     // Initial render on page load
     renderReviews();
+
+    // ---- Scroll-nav active state ----
+    const sectionIds = ["about", "skills", "experience", "connections-overview"];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const navLinks = document.querySelectorAll(".scroll-nav a");
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach((link) => {
+              const target = link.getAttribute("data-target");
+              link.classList.toggle("active", target === id);
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.35,
+      }
+    );
+
+    sections.forEach((sec) => sectionObserver.observe(sec));
   </script>
 </body>
 </html>
