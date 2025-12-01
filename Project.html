@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shanoor Verma | Software Engineer & ML</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #8b5cf6;
+      --accent2: #22d3ee;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: #0f172a;
+      --border: rgba(148, 163, 184, 0.3);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2933 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Navbar */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.95), rgba(2,6,23,0.4));
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .nav-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 45%, #0ea5e9 100%);
+      box-shadow: 0 0 30px rgba(129, 140, 248, 0.6);
+    }
+
+    .nav-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-subtitle {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.8rem 1.5rem 3rem;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.4rem;
+      align-items: center;
+      min-height: calc(100vh - 80px);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3vw + 1rem, 3.1rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #a855f7, #22d3ee, #f97316);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 0.96rem;
+      color: var(--muted);
+      max-width: 32rem;
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .tag-pill {
+      font-size: 0.76rem;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: radial-gradient(circle at top left, rgba(148,163,184,0.18), transparent 60%);
+      color: #e5e7eb;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .btn-solid,
+    .btn-ghost {
+      font-size: 0.9rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-solid {
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 40%, #22d3ee 100%);
+      box-shadow: 0 12px 30px rgba(15,23,42,0.9);
+      color: #0b1020;
+      font-weight: 600;
+    }
+
+    .btn-solid:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(15,23,42,1);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.7);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,0.95);
+      transform: translateY(-1px);
+    }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 360px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148,163,184,0.4);
+      background: radial-gradient(circle at 20% 0, rgba(148,163,184,0.16), transparent 50%),
+                  linear-gradient(145deg, rgba(15,23,42,0.9), rgba(15,23,42,1));
+      box-shadow: var(--shadow-soft);
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-inner {
+      border-radius: calc(var(--radius-xl) - 8px);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1.3rem;
+      background: radial-gradient(circle at top right, rgba(129,140,248,0.24), transparent 60%);
+    }
+
+    .hero-chip {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-role {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .hero-badges span {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(129,140,248,0.6);
+    }
+
+    /* Cards / grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(148,163,184,0.12), transparent 60%),
+                  rgba(15,23,42,0.92);
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.75);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .skill-pill {
+      font-size: 0.75rem;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      color: #e5e7eb;
+    }
+
+    /* Experience timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .timeline-item {
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.98);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(129,140,248,0.24), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .timeline-item:hover::before {
+      opacity: 1;
+    }
+
+    .timeline-title {
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .timeline-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-body {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.5;
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
+    }
+
+    footer {
+      padding-top: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid rgba(15,23,42,0.9);
+      margin-top: 2rem;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+        min-height: auto;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .nav-inner {
+        padding-inline: 1rem;
+      }
+
+      .page {
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-logo"></div>
+        <div>
+          <div class="nav-title">Shanoor Verma</div>
+          <div class="nav-subtitle">Software Engineer · AI/ML · Cloud · Cyber</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="connect.html">Connect</a>
+        <a href="connections.html">Connections</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left reveal">
+        <div class="section-label">Portfolio</div>
+        <h1 class="hero-title">
+          Engineering <span class="hero-highlight">intelligent, secure</span><br /> software systems.
+        </h1>
+        <p class="hero-sub">
+          I’m a Software Engineer based in Newport News, VA, specializing in AI/ML, scalable cloud
+          architectures, and high-performance simulation systems. My work spans U.S. Navy carrier
+          simulations, physics-informed ML, full-stack cloud platforms, and agentic AI automation.
+        </p>
+
+        <div class="hero-tags">
+          <span class="tag-pill">Software Engineering</span>
+          <span class="tag-pill">AI / ML / NLP</span>
+          <span class="tag-pill">Cloud & DevOps</span>
+          <span class="tag-pill">Cyber & Secure Systems</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="projects.html" class="btn-solid">
+            View Projects <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="connect.html" class="btn-ghost">
+            Let’s connect <i class="fa-regular fa-paper-plane"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-chip">Currently</div>
+            <div class="hero-role">Software Engineer · HII Ingalls Shipbuilding</div>
+            <div class="hero-meta">
+              Newport News, VA · U.S. Navy carrier simulation systems
+            </div>
+            <p class="timeline-body">
+              Building C#/.NET and C/C++ simulation software on Linux VMs with secure, distributed,
+              gRPC-based communication. Improving deployment pipelines, test coverage, and runtime
+              performance while exploring AWS Solutions Architect and advanced cloud patterns.
+            </p>
+            <div class="hero-badges">
+              <span>C# · .NET · C/C++</span>
+              <span>Azure DevOps · CI/CD</span>
+              <span>gRPC · Linux</span>
+              <span>AWS (in progress)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + EDUCATION -->
+    <section id="about" class="reveal">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Who I am.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>About me</h3>
+          <p>
+            I’m a Computer Engineering graduate from Virginia Tech (Machine Learning concentration,
+            May 2025), focused on building systems where performance, security, and intelligence
+            actually meet.
+          </p>
+          <p style="margin-top: 0.8rem;">
+            I enjoy working end-to-end: from low-level simulation and infra automation to ML models,
+            cloud services, and user-facing applications. My background spans research in
+            Physics-Informed Machine Learning, digital twins, AI chatbots, and production-grade
+            distributed systems.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Education</h3>
+          <p><strong>Virginia Tech, College of Engineering</strong></p>
+          <p style="font-size: 0.85rem; margin-top: 0.25rem;">
+            Bachelor of Science in Computer Engineering<br/>
+            Concentration: Machine Learning<br/>
+            Graduation: May 2025
+          </p>
+          <div class="skills-grid" style="margin-top: 0.9rem;">
+            <span class="skill-pill">Data Structures & Algorithms</span>
+            <span class="skill-pill">Machine Learning</span>
+            <span class="skill-pill">Digital Systems & Simulation</span>
+            <span class="skill-pill">Cloud & Distributed Systems</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">What I work with.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Languages & Core</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">C / C++ / C#</span>
+            <span class="skill-pill">TypeScript · JavaScript</span>
+            <span class="skill-pill">HTML / CSS</span>
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">Data Structures & Algorithms</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Frameworks, Cloud & ML</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">.NET Framework</span>
+            <span class="skill-pill">React.js · Angular · Node.js</span>
+            <span class="skill-pill">TensorFlow · PyTorch</span>
+            <span class="skill-pill">CUDA · NVIDIA Modulus</span>
+            <span class="skill-pill">Docker · Kubernetes</span>
+            <span class="skill-pill">AWS (EC2, S3, IAM, Lambda)</span>
+            <span class="skill-pill">NLP · LLM · Agentic AI</span>
+            <span class="skill-pill">DevOps / MLOps</span>
+            <span class="skill-pill">Linux (Ubuntu)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Where I’ve been building.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Professional Experience</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-title">Software Engineer – HII Ingalls Shipbuilding</div>
+              <div class="timeline-meta">06/2025 – Present · Newport News, VA</div>
+              <div class="timeline-body">
+                Developed U.S. Navy carrier simulation software using C#, .NET, and C/C++ on Linux VMs
+                with secure client-server communication. Improved deployment performance by 50%+ via
+                architectural redesign, built encrypted distributed components, and achieved 95%+ test
+                coverage through Azure DevOps CI/CD.
+              </div>
+              <div class="chips-row">
+                <span class="chip">C# · .NET · C/C++</span>
+                <span class="chip">gRPC · SecureCRT</span>
+                <span class="chip">Azure DevOps · CI/CD</span>
+                <span class="chip">AWS (track in progress)</span>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Software Engineer & Consultant – SR Travel Agency</div>
+              <div class="timeline-meta">12/2024 – 07/2025 · India (Remote)</div>
+              <div class="timeline-body">
+                Built a real-time travel booking platform with flight APIs (Amadeus, Skyscanner, Sabre),
+                WebSockets, and full-stack TypeScript/React/Node. Deployed scalable services on AWS and
+                integrated AI chatbots (Dialogflow, Rasa) with Salesforce for 24/7 support.
+              </div>
+              <div class="chips-row">
+                <span class="chip">TypeScript · React · Node.js</span>
+                <span class="chip">AWS EC2 / Lambda / S3</span>
+                <span class="chip">REST APIs · WebSockets</span>
+                <span class="chip">Chatbots · Agentic AI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Research & Internships</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-title">Machine Learning Intern – Hume Center</div>
+              <div class="timeline-meta">05/2024 – 08/2024 · Blacksburg, VA</div>
+              <div class="timeline-body">
+                Led Physics-Informed ML research using NVIDIA Modulus, CUDA, and PyTorch/TensorFlow to solve
+                PDE-based simulations with GPU acceleration. Worked on Digital Twins and explored RL inside PIML
+                frameworks for adaptive parameter optimization.
+              </div>
+              <div class="chips-row">
+                <span class="chip">NVIDIA Modulus · CUDA</span>
+                <span class="chip">PINNs · Neural Operators</span>
+                <span class="chip">Digital Twins</span>
+                <span class="chip">Kubernetes · Ubuntu</span>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-title">Software Engineer Intern – Kastom Cloud</div>
+              <div class="timeline-meta">03/2024 – 05/2024 · San Francisco, CA (Remote)</div>
+              <div class="timeline-body">
+                Built scalable web/mobile apps using Ionic & React with Node.js backends on AWS, researched
+                multi-tenant SaaS deployment, and integrated chatbots & AI agents into customer-facing UIs.
+              </div>
+              <div class="chips-row">
+                <span class="chip">React · Angular · Ionic</span>
+                <span class="chip">Node.js</span>
+                <span class="chip">AWS Lambda · S3</span>
+                <span class="chip">SaaS · Chatbots</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> · Designed & built by Shanoor Verma ·
+      <span style="color: var(--muted); font-size: 0.8rem;">
+        Newport News, VA · <a href="mailto:Shanoor_1220@outlook.com">Shanoor_1220@outlook.com</a> · 540-394-8551
+      </span>
+    </footer>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

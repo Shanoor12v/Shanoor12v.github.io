@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Connections & Reviews | Shanoor Verma</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:"Poppins",sans-serif;background:#020617;color:#f9fafb;}
+    a{color:inherit;text-decoration:none;}
+    .nav{position:sticky;top:0;z-index:10;background:rgba(2,6,23,0.95);border-bottom:1px solid rgba(148,163,184,0.3);}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:0.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+    .nav-links{display:flex;gap:1.2rem;font-size:0.9rem;color:#9ca3af;}
+    .nav-links a:hover{color:#f9fafb;}
+    .page{max-width:900px;margin:0 auto;padding:2rem 1.5rem 3rem;}
+    .title{font-size:1.9rem;font-weight:600;margin-bottom:0.5rem;}
+    .sub{font-size:0.9rem;color:#9ca3af;margin-bottom:1.6rem;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;margin-bottom:2rem;}
+    .card{border-radius:18px;background:rgba(15,23,42,0.96);border:1px solid rgba(148,163,184,0.4);padding:1.3rem;}
+    .name{font-weight:600;font-size:0.95rem;margin-bottom:0.2rem;}
+    .role{font-size:0.78rem;color:#9ca3af;margin-bottom:0.6rem;}
+    .text{font-size:0.86rem;color:#e5e7eb;line-height:1.6;}
+    .form{border-radius:18px;background:rgba(15,23,42,0.96);border:1px solid rgba(148,163,184,0.4);padding:1.4rem;}
+    .form h2{font-size:1.1rem;margin-bottom:0.6rem;}
+    .form p{font-size:0.85rem;color:#9ca3af;margin-bottom:1rem;}
+    .form label{display:block;font-size:0.82rem;margin-bottom:0.2rem;}
+    .form input,.form textarea{
+      width:100%;border-radius:12px;border:1px solid rgba(148,163,184,0.6);
+      background:#020617;color:#f9fafb;padding:0.6rem 0.8rem;font-family:inherit;font-size:0.9rem;margin-bottom:0.8rem;
+    }
+    .form textarea{min-height:110px;resize:vertical;}
+    .btn{
+      padding:0.55rem 1.3rem;border-radius:999px;border:none;
+      background:linear-gradient(135deg,#a855f7,#22d3ee);color:#020617;
+      font-weight:600;font-size:0.9rem;cursor:pointer;
+    }
+    .btn:hover{opacity:0.95;}
+    @media(max-width:640px){.nav-inner{padding-inline:1rem;}.page{padding-inline:1rem;}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <div><strong>Shanoor Verma</strong> · Connections</div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="connect.html">Connect</a>
+        <a href="connections.html">Connections</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <h1 class="title">Connections & Reviews</h1>
+    <p class="sub">
+      A space for teammates, managers, and collaborators to share how we’ve worked together.
+      I periodically add selected feedback here.
+    </p>
+
+    <!-- Example testimonials – edit these as you receive real ones -->
+    <div class="grid">
+      <div class="card">
+        <div class="name">[Manager Name]</div>
+        <div class="role">Manager · HII Ingalls Shipbuilding</div>
+        <div class="text">
+          “Shanoor consistently delivered high-quality features in a complex simulation environment,
+          showing strong ownership, technical depth, and attention to secure design.”
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="name">[Colleague Name]</div>
+        <div class="role">Teammate · SR Travel Agency Platform</div>
+        <div class="text">
+          “Working with Shanoor on our real-time travel booking system was seamless. He quickly
+          connected business needs to technical decisions and improved our architecture significantly.”
+        </div>
+      </div>
+    </div>
+
+    <!-- Simple review submission form (sends via email) -->
+    <div class="form">
+      <h2>Have we worked together?</h2>
+      <p>
+        If you’re a manager, teammate, or collaborator and would like to share a short review or reference,
+        you can send it to me here. With your permission, I may add a snippet to this page.
+      </p>
+
+      <form action="mailto:Shanoor_1220@outlook.com" method="post" enctype="text/plain">
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" placeholder="Your full name" required />
+
+        <label for="role">Your role & how we worked together</label>
+        <input id="role" name="role" type="text" placeholder="e.g., Manager at HII / Teammate at SR Travel" required />
+
+        <label for="review">Your review</label>
+        <textarea id="review" name="review" placeholder="A short review or feedback..." required></textarea>
+
+        <button class="btn" type="submit">Send review</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
