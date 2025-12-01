@@ -298,6 +298,36 @@
       border: 1px solid rgba(129,140,248,0.6);
     }
 
+    /* HERO PROFILE AVATAR */
+    .hero-avatar-row {
+      margin: 0.6rem 0 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid rgba(148,163,184,0.9);
+      box-shadow: 0 0 18px rgba(129,140,248,0.85);
+    }
+
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-avatar-text {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
     /* CARDS / GRIDS */
     .grid-2 {
       display: grid;
@@ -440,6 +470,129 @@
       background: rgba(15,23,42,0.9);
     }
 
+    /* CONNECTIONS / REVIEWS SECTION */
+    .reviews-wrapper {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0% 0%, rgba(56,189,248,0.16), transparent 60%),
+                  rgba(15,23,42,0.96);
+      border: 1px solid rgba(148,163,184,0.45);
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 14px 36px rgba(15,23,42,0.9);
+    }
+
+    .reviews-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .reviews-header p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    .review-btn {
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, #a855f7, #f97316);
+      color: #f9fafb;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.85);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .review-form {
+      display: none;
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 0.6rem;
+    }
+
+    .review-form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .review-form input,
+    .review-form textarea {
+      flex: 1 1 180px;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #020617;
+      color: var(--text);
+      padding: 0.55rem 0.7rem;
+      font-family: inherit;
+      font-size: 0.86rem;
+    }
+
+    .review-form textarea {
+      width: 100%;
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .review-form button[type="submit"] {
+      margin-top: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: none;
+      background: #22c55e;
+      color: #020617;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .reviews-list {
+      margin-top: 0.6rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.7rem;
+    }
+
+    .review-card {
+      padding: 0.7rem 0.8rem;
+      border-radius: 0.8rem;
+      background: rgba(15,23,42,0.98);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+    }
+
+    .review-meta {
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .review-meta span {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .review-text {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      line-height: 1.45;
+    }
+
+    .reviews-note {
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      opacity: 0.85;
+    }
+
     footer {
       padding-top: 1.5rem;
       font-size: 0.75rem;
@@ -487,6 +640,11 @@
 
       .timeline-rail {
         display: none;
+      }
+
+      .reviews-header {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
 
@@ -560,6 +718,18 @@
             <div class="hero-meta">
               Newport News, VA · U.S. Navy Aircraft Carrier Simulation Systems
             </div>
+
+            <!-- PROFILE AVATAR -->
+            <div class="hero-avatar-row">
+              <div class="hero-avatar">
+                <img src="profile.jpg" alt="Shanoor Verma" />
+              </div>
+              <div class="hero-avatar-text">
+                Building secure, high-performance modeling & simulation systems
+                while growing deeper into AI/ML and cloud.
+              </div>
+            </div>
+
             <p class="timeline-body">
               Software developer working on modeling and simulation of aircraft carriers, enhancing private
               servers by adding new deployment constraints and improving performance by more than 50%. I work
@@ -770,6 +940,56 @@
       </div>
     </section>
 
+    <!-- CONNECTIONS / REVIEWS SECTION -->
+    <section id="connections-overview" class="reveal">
+      <div class="section-label">Connections</div>
+      <h2 class="section-title">Reviews & kind words.</h2>
+
+      <div class="reviews-wrapper">
+        <div class="reviews-header">
+          <p>
+            Feedback from managers, teammates, and collaborators I’ve worked with.
+            These notes help others understand how I show up in teams and on projects.
+          </p>
+          <button class="review-btn" type="button" id="toggleReviewForm">
+            <i class="fa-regular fa-comment-dots"></i> Add a review
+          </button>
+        </div>
+
+        <form class="review-form" id="reviewForm">
+          <div class="review-form-row">
+            <input
+              type="text"
+              id="reviewName"
+              placeholder="Your name"
+              required
+            />
+            <input
+              type="text"
+              id="reviewRole"
+              placeholder="Your role / how we worked together"
+              required
+            />
+          </div>
+          <textarea
+            id="reviewText"
+            placeholder="Write a short review or feedback..."
+            required
+          ></textarea>
+          <button type="submit">Save review</button>
+        </form>
+
+        <div class="reviews-list" id="reviewsList">
+          <!-- Reviews injected here by JS -->
+        </div>
+
+        <p class="reviews-note">
+          Reviews are stored as JSON in your browser (localStorage) on this device.
+          For formal references, please reach out via email or LinkedIn.
+        </p>
+      </div>
+    </section>
+
     <footer>
       © <span id="year"></span> · Designed & built by Shanoor Verma ·
       <span style="color: var(--muted); font-size: 0.8rem;">
@@ -836,6 +1056,81 @@
     window.addEventListener("scroll", updateTimelineDot);
     window.addEventListener("resize", updateTimelineDot);
     window.addEventListener("load", updateTimelineDot);
+
+    // ---- Simple JSON-backed review system using localStorage ----
+    const reviewForm = document.getElementById("reviewForm");
+    const toggleReviewFormBtn = document.getElementById("toggleReviewForm");
+    const reviewsList = document.getElementById("reviewsList");
+
+    function getStoredReviews() {
+      try {
+        const raw = localStorage.getItem("shanoorReviews");
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        console.error("Could not parse stored reviews", e);
+        return [];
+      }
+    }
+
+    function saveReviews(reviews) {
+      localStorage.setItem("shanoorReviews", JSON.stringify(reviews));
+    }
+
+    function renderReviews() {
+      const reviews = getStoredReviews();
+      reviewsList.innerHTML = "";
+
+      if (!reviews.length) {
+        reviewsList.innerHTML =
+          '<p style="font-size:0.9rem;color:var(--muted);">No reviews yet. Be the first to add one!</p>';
+        return;
+      }
+
+      reviews.forEach((r) => {
+        const card = document.createElement("div");
+        card.className = "review-card";
+        card.innerHTML = `
+          <div class="review-meta">
+            ${r.name} <span>· ${r.role}</span>
+          </div>
+          <div class="review-text">
+            ${r.text}
+          </div>
+        `;
+        reviewsList.appendChild(card);
+      });
+    }
+
+    if (toggleReviewFormBtn && reviewForm) {
+      toggleReviewFormBtn.addEventListener("click", () => {
+        const isVisible = reviewForm.style.display === "block";
+        reviewForm.style.display = isVisible ? "none" : "block";
+        toggleReviewFormBtn.innerHTML = isVisible
+          ? '<i class="fa-regular fa-comment-dots"></i> Add a review'
+          : 'Close';
+      });
+
+      reviewForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("reviewName").value.trim();
+        const role = document.getElementById("reviewRole").value.trim();
+        const text = document.getElementById("reviewText").value.trim();
+
+        if (!name || !role || !text) return;
+
+        const reviews = getStoredReviews();
+        reviews.unshift({ name, role, text, createdAt: new Date().toISOString() });
+        saveReviews(reviews);
+        renderReviews();
+
+        reviewForm.reset();
+        reviewForm.style.display = "none";
+        toggleReviewFormBtn.innerHTML = '<i class="fa-regular fa-comment-dots"></i> Add a review';
+      });
+    }
+
+    // Initial render on page load
+    renderReviews();
   </script>
 </body>
 </html>
