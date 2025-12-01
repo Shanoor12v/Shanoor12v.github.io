@@ -2,26 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Shanoor Verma | Portfolio</title>
+  <title>Shanoor Verma | Software Engineer & ML</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- AOS Animations -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- Fonts + Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root {
       --bg: #050816;
       --bg-alt: #0b1020;
-      --accent: #7c3aed;
-      --accent-soft: rgba(124, 58, 237, 0.18);
-      --text: #e5e7eb;
+      --accent: #8b5cf6;
+      --accent2: #22d3ee;
+      --text: #f9fafb;
       --muted: #9ca3af;
       --card: #0f172a;
-      --border: #1f2937;
+      --border: rgba(148, 163, 184, 0.3);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
     }
 
     * {
@@ -30,613 +30,812 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
-      color: var(--text);
+    html {
       scroll-behavior: smooth;
     }
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 50;
-      backdrop-filter: blur(20px);
-      background: rgba(15, 23, 42, 0.7);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2933 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      min-height: 100vh;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVBAR */
     .nav {
-      max-width: 1100px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2,6,23,0.95), rgba(2,6,23,0.4));
+      border-bottom: 1px solid rgba(148,163,184,0.2);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 0.9rem 1.5rem;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
     }
 
-    .logo {
+    .nav-left {
       display: flex;
       align-items: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.05em;
+      gap: 0.6rem;
     }
 
-    .logo-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
+    .nav-logo {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      margin-right: 8px;
-      box-shadow: 0 0 10px var(--accent);
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 45%, #0ea5e9 100%);
+      box-shadow: 0 0 30px rgba(129, 140, 248, 0.6);
+    }
+
+    .nav-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-subtitle {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
     }
 
     .nav-links a {
-      margin-left: 1.5rem;
+      position: relative;
+      padding-bottom: 2px;
       color: var(--muted);
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: 0.2s;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+      border-radius: 999px;
+      transition: width 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: white;
+      color: var(--text);
     }
 
-    main {
-      max-width: 1100px;
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* PAGE LAYOUT */
+    .page {
+      max-width: 1080px;
       margin: 0 auto;
-      padding: 7rem 1.5rem 3rem;
+      padding: 1.8rem 1.5rem 3rem;
     }
 
-    /******** HERO ********/
+    section {
+      padding: 3rem 0;
+    }
 
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+    }
+
+    /* HERO */
     .hero {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.4rem;
       align-items: center;
-      min-height: calc(100vh - 120px);
+      min-height: calc(100vh - 80px);
     }
 
     .hero-title {
-      font-size: 2.6rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+      font-size: clamp(2.2rem, 3vw + 1rem, 3.1rem);
+      font-weight: 700;
       line-height: 1.1;
+      margin-bottom: 0.9rem;
     }
 
-    .hero-title span {
-      background: linear-gradient(120deg, #a855f7, #f97316, #06b6d4);
+    .hero-highlight {
+      background: linear-gradient(120deg, #a855f7, #22d3ee, #f97316);
       -webkit-background-clip: text;
       color: transparent;
     }
 
-    .hero-subtitle {
-      font-size: 1.1rem;
+    .hero-sub {
+      font-size: 0.96rem;
       color: var(--muted);
-      margin-bottom: 1.2rem;
+      max-width: 32rem;
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
     }
 
-    .hero-img-wrapper {
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .tag-pill {
+      font-size: 0.76rem;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: radial-gradient(circle at top left, rgba(148,163,184,0.18), transparent 60%);
+      color: #e5e7eb;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .btn-solid,
+    .btn-ghost {
+      font-size: 0.9rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-solid {
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 40%, #22d3ee 100%);
+      box-shadow: 0 12px 30px rgba(15,23,42,0.9);
+      color: #0b1020;
+      font-weight: 600;
+    }
+
+    .btn-solid:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(15,23,42,1);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.7);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,0.95);
+      transform: translateY(-1px);
+    }
+
+    .hero-right {
       position: relative;
+      display: flex;
+      justify-content: center;
     }
 
-    .hero-img {
+    .hero-card {
       width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      max-width: 360px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148,163,184,0.4);
+      background: radial-gradient(circle at 20% 0, rgba(148,163,184,0.16), transparent 50%),
+                  linear-gradient(145deg, rgba(15,23,42,0.9), rgba(15,23,42,1));
+      box-shadow: var(--shadow-soft);
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    /******** EXPERIENCE FIXED & CLEAN ********/
-.timeline {
-  position: relative;
-  padding-left: 3.2rem;
-  margin-top: 1.2rem;
-}
+    .hero-card-inner {
+      border-radius: calc(var(--radius-xl) - 8px);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1.3rem;
+      background: radial-gradient(circle at top right, rgba(129,140,248,0.24), transparent 60%);
+    }
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 1.7rem;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  border-radius: 10px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
-}
+    .hero-chip {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
 
-.timeline-item {
-  position: relative;
-  margin-bottom: 2.8rem;
-  min-height: 60px;
-  padding-bottom: 0.8rem;
-}
+    .hero-role {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
 
-.timeline-dot {
-  position: absolute;
-  top: 6px;
-  left: 1.25rem;
-  width: 14px;
-  height: 14px;
-  background: #050816;
-  border-radius: 50%;
-  border: 3px solid var(--accent);
-  box-shadow: 0 0 10px var(--accent);
-  z-index: 10;
-}
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
 
-.timeline-content {
-  margin-left: 1.4rem;
-}
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
 
-.timeline-role {
-  font-size: 1rem;
-  font-weight: 600;
-}
+    .hero-badges span {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(129,140,248,0.6);
+    }
 
-.timeline-company {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-.timeline-desc {
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-
-    /******** PROJECTS ********/
-
-    .projects-grid {
+    /* CARDS / GRIDS */
+    .grid-2 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
     }
 
-    .project-card {
-      background: rgba(15, 23, 42, 0.9);
-      padding: 1.2rem;
-      border-radius: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(148,163,184,0.12), transparent 60%),
+                  rgba(15,23,42,0.92);
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.75);
     }
 
-    .project-chip {
-      color: var(--accent);
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .skill-pill {
       font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      margin-bottom: 6px;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      color: #e5e7eb;
     }
 
-    /******** CONTACT ********/
-
-    .contact-layout {
+    /* EXPERIENCE SECTION WITH PIPELINE */
+    .experience-layout {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 1.5rem;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .timeline-rail {
+      position: relative;
+      width: 36px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .timeline-track {
+      position: relative;
+      width: 4px;
+      background: linear-gradient(to bottom, rgba(148,163,184,0.4), rgba(148,163,184,0.1));
+      border-radius: 999px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      flex: 1;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      transform: translateX(-50%);
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 60%, #22d3ee);
+      box-shadow: 0 0 16px rgba(129,140,248,0.85);
+      transition: top 0.3s ease-out;
+    }
+
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.98);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(129,140,248,0.24), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .timeline-item.active::before {
+      opacity: 1;
+    }
+
+    .timeline-title {
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .timeline-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-body {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.5;
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
     }
 
     footer {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem;
-      text-align: center;
-      font-size: 0.8rem;
-      opacity: 0.8;
-    }
-    /* REVIEWS / CONNECTIONS */
-    .reviews-wrapper {
-      margin-top: 1rem;
-      padding: 1.2rem 1.4rem;
-      border-radius: 1rem;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .reviews-header {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .reviews-header p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 420px;
-    }
-
-    .review-btn {
-      padding: 0.4rem 0.9rem;
-      border-radius: 999px;
-      border: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      background: linear-gradient(135deg, #a855f7, #f97316);
-      color: #f9fafb;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.85);
-    }
-
-    .review-form {
-      display: none;
-      margin-top: 0.6rem;
-      padding-top: 0.6rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      margin-bottom: 0.6rem;
-    }
-
-    .review-form-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 0.6rem;
-    }
-
-    .review-form input,
-    .review-form textarea {
-      flex: 1 1 180px;
-      border-radius: 0.6rem;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background: #020617;
-      color: var(--text);
-      padding: 0.55rem 0.7rem;
-      font-family: inherit;
-      font-size: 0.86rem;
-    }
-
-    .review-form textarea {
-      width: 100%;
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .review-form button[type="submit"] {
-      margin-top: 0.4rem;
-      padding: 0.45rem 1rem;
-      border-radius: 999px;
-      border: none;
-      background: #22c55e;
-      color: #020617;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-
-    .reviews-list {
-      margin-top: 0.6rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0.7rem;
-    }
-
-    .review-card {
-      padding: 0.7rem 0.8rem;
-      border-radius: 0.8rem;
-      background: rgba(15, 23, 42, 0.95);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-    }
-
-    .review-meta {
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .review-meta span {
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    .review-text {
-      font-size: 0.86rem;
-      color: var(--muted);
-      margin-top: 0.35rem;
-      line-height: 1.45;
-    }
-
-    .reviews-note {
-      margin-top: 0.6rem;
+      padding-top: 1.5rem;
       font-size: 0.75rem;
       color: var(--muted);
-      opacity: 0.85;
+      text-align: center;
+      border-top: 1px solid rgba(15,23,42,0.9);
+      margin-top: 2rem;
     }
 
-    @media(max-width: 860px) {
-      .reviews-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    @media(max-width: 860px) {
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
       .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+        min-height: auto;
       }
-      .hero-img-wrapper {
+
+      .hero-right {
         order: -1;
       }
-      .contact-layout {
-        grid-template-columns: 1fr;
+
+      .nav-inner {
+        padding-inline: 1rem;
+      }
+
+      .page {
+        padding-inline: 1rem;
+      }
+
+      .experience-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .timeline-rail {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <nav class="nav">
-      <div class="logo"><span class="logo-dot"></span>SHANOOR VERMA</div>
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#connections">Connections</a>
-        <a href="#contact">Contact</a>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-logo"></div>
+        <div>
+          <div class="nav-title">Shanoor Verma</div>
+          <div class="nav-subtitle">Software Engineer · AI/ML · Cloud · Cybersecurity</div>
+        </div>
       </div>
-    </nav>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="connect.html">Connect</a>
+        <a href="connections.html">Connections</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-
+  <main class="page">
     <!-- HERO -->
-    <section id="home" class="hero">
-      <div data-aos="fade-right">
-        <h1 class="hero-title">Hi, I'm <span>Shanoor</span></h1>
-
-        <p class="hero-subtitle">
-          Software Engineer specializing in <b>AI, Machine Learning, Cloud Services</b> and building scalable applications that actually ship.  
-          Passionate about automation, intelligent systems, and developing side-brands/products that make life easier.
+    <section class="hero">
+      <div class="hero-left reveal">
+        <div class="section-label">Portfolio</div>
+        <h1 class="hero-title">
+          Engineering <span class="hero-highlight">intelligent, secure</span><br /> software systems.
+        </h1>
+        <p class="hero-sub">
+          I’m a U.S. citizen Software Engineer based in Newport News, VA, specializing in modeling & simulation,
+          AI/ML, and cloud-native systems. I’ve worked on U.S. Navy aircraft carrier simulations, physics-informed
+          ML research, real-time travel platforms, and chatbots powered by modern AI.
         </p>
+
+        <div class="hero-tags">
+          <span class="tag-pill">Software Engineering</span>
+          <span class="tag-pill">AI / ML / PIML</span>
+          <span class="tag-pill">Cloud & DevOps</span>
+          <span class="tag-pill">Cyber & Secure Systems</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="projects.html" class="btn-solid">
+            View Projects <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="connect.html" class="btn-ghost">
+            Let’s connect <i class="fa-regular fa-paper-plane"></i>
+          </a>
+        </div>
       </div>
 
-      <div class="hero-img-wrapper" data-aos="fade-left">
-        <img src="images/shanoor.jpg" alt="Shanoor portrait" class="hero-img" />
+      <div class="hero-right reveal">
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-chip">Currently</div>
+            <div class="hero-role">Software Engineer 1 · HII Ingalls Shipbuilding</div>
+            <div class="hero-meta">
+              Newport News, VA · U.S. Navy Aircraft Carrier Simulation Systems
+            </div>
+            <p class="timeline-body">
+              Software developer working on modeling and simulation of aircraft carriers, enhancing private
+              servers by adding new deployment constraints and improving performance by more than 50%. I work
+              primarily in C# and .NET within Agile teams, delivering features reliably and securely.
+            </p>
+            <div class="hero-badges">
+              <span>C# · .NET</span>
+              <span>Modeling & Simulation</span>
+              <span>Secure Systems</span>
+              <span>Agile Delivery</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-<section id="experience">
-  <h2 data-aos="fade-up" style="margin-bottom: 1.5rem;">Experience</h2>
-
-  <div class="timeline">
-
-    <!-- EXPERIENCE ITEM -->
-    <div class="timeline-item" data-aos="fade-right">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-role">Software Developer — Modeling & Simulation</div>
-        <div class="timeline-company">Newport News Shipbuilding (HII NNS) · 2025</div>
-        <div class="timeline-desc">
-          Building secure client-server features for U.S. Navy aircraft-carrier simulation systems using 
-          C#, .NET, C++, Azure DevOps pipelines, and performance-optimized deployments.
+    <!-- ABOUT + EDUCATION -->
+    <section id="about" class="reveal">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Who I am.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>About me</h3>
+          <p>
+            I’m a Computer Engineering graduate from Virginia Tech with a concentration in
+            Machine Learning / Artificial Intelligence. I like building systems that sit at the
+            intersection of high-performance software, ML, and security.
+          </p>
+          <p style="margin-top: 0.8rem;">
+            My experience ranges from carrier-grade simulations and travel platforms with real-time APIs,
+            to Physics-Informed ML (PIML), digital twins, and AI-powered chatbots integrated into real
+            business workflows.
+          </p>
         </div>
-      </div>
-    </div>
-
-    <!-- EXPERIENCE ITEM -->
-    <div class="timeline-item" data-aos="fade-right">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-role">Research Assistant — Physics-Informed ML</div>
-        <div class="timeline-company">Hume Center · Virginia Tech · 2024</div>
-        <div class="timeline-desc">
-          Worked on PINNs, Neural Operators, Digital Twins, and CUDA-accelerated simulations using NVIDIA Modulus.
+        <div class="card">
+          <h3>Education</h3>
+          <p><strong>Virginia Tech, College of Engineering</strong></p>
+          <p style="font-size: 0.85rem; margin-top: 0.25rem;">
+            Bachelor of Science in Computer Engineering<br/>
+            Concentration: Machine Learning / Artificial Intelligence
+          </p>
+          <div class="skills-grid" style="margin-top: 0.9rem;">
+            <span class="skill-pill">Data Structures & Algorithms</span>
+            <span class="skill-pill">Machine Learning / AI</span>
+            <span class="skill-pill">Modeling & Simulation</span>
+            <span class="skill-pill">Numerical Methods</span>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- EXPERIENCE ITEM -->
-    <div class="timeline-item" data-aos="fade-right">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <div class="timeline-role">Cybersecurity Risk Advisory Intern</div>
-        <div class="timeline-company">Baker Tilly · 2024</div>
-        <div class="timeline-desc">
-          Worked on SOX, CMMC, NIST audits and assisted with AI advisory for Higher-Ed institutions. 
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-        <!-- PROJECTS -->
-    <section id="projects">
-      <h2 data-aos="fade-up">Projects</h2>
-
-      <div class="projects-grid">
-
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-chip">AI · Physics</div>
-          <h3>Physics-Informed Neural Operators</h3>
-          <p>Surrogate modeling for PDE-based fluid flow using PINO, DeepONet, and Modulus.</p>
-        </div>
-
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-chip">NLP · RL</div>
-          <h3>PPO Reinforcement Learning for Prompt Safety</h3>
-          <p>Trained RoBERTa with PPO reward signals for sensitive prompt detection (“text” red flags).</p>
-        </div>
-
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-chip">Vision</div>
-          <h3>YOLOv5 Ship Detection & Tracking</h3>
-          <p>Custom training for ship direction + velocity estimation.</p>
-        </div>
-
       </div>
     </section>
 
-    <!-- CONNECTIONS -->
-    <section id="connections">
-  <h2 data-aos="fade-up">Connections</h2>
-
-  <div class="reviews-wrapper" data-aos="fade-up">
-    <div class="reviews-header">
-      <p>
-        Reviews, kind words, and feedback from people I’ve worked with. 
-        This helps others understand how I collaborate and ship work.
-      </p>
-      <button class="review-btn" type="button" id="toggleReviewForm">
-        + Add a review
-      </button>
-    </div>
-
-    <form class="review-form" id="reviewForm">
-      <div class="review-form-row">
-        <input
-          type="text"
-          id="reviewName"
-          placeholder="Your name"
-          required
-        />
-        <input
-          type="text"
-          id="reviewRole"
-          placeholder="Your role / how we worked together"
-          required
-        />
-      </div>
-      <textarea
-        id="reviewText"
-        placeholder="Write a short review or feedback..."
-        required
-      ></textarea>
-      <button type="submit">Save review</button>
-    </form>
-
-    <div class="reviews-list" id="reviewsList">
-      <!-- Reviews will be injected here by JavaScript -->
-    </div>
-
-    <p class="reviews-note">
-      Reviews are stored as JSON in your browser (localStorage) so you can see them again on this device.
-      For an official reference, you can also message me on LinkedIn or via email.
-    </p>
-  </div>
-</section>
-
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2 data-aos="fade-up">Contact</h2>
-
-      <div class="contact-layout">
-
-        <div data-aos="fade-right">
-          <p>Email:</p>
-          <strong>Shanoor_1220@outlook.com</strong>
-          <p style="margin-top: 1rem;">LinkedIn:</p>
-          <strong>linkedin.com/in/yourhandle</strong>
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">What I work with.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Languages & Core</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">C/C++</span>
+            <span class="skill-pill">C#</span>
+            <span class="skill-pill">TypeScript · JavaScript</span>
+            <span class="skill-pill">HTML / CSS</span>
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">Data Structures & Algorithms</span>
+          </div>
         </div>
-
-        <form data-aos="fade-left">
-          <input type="text" placeholder="Your name" style="width:100%; padding:10px; margin-bottom:10px;">
-          <input type="email" placeholder="Your email" style="width:100%; padding:10px; margin-bottom:10px;">
-          <textarea placeholder="Message" style="width:100%; padding:10px; height:120px;"></textarea>
-          <button style="margin-top:10px; padding:10px 20px; background:var(--accent); color:white; border:none; border-radius:8px;">Send</button>
-        </form>
-
+        <div class="card">
+          <h3>Frameworks, ML & Cloud</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">.NET Framework</span>
+            <span class="skill-pill">TensorFlow · PyTorch</span>
+            <span class="skill-pill">Scikit-learn</span>
+            <span class="skill-pill">NVIDIA Modulus · CUDA</span>
+            <span class="skill-pill">Node.js · React.js · Angular</span>
+            <span class="skill-pill">RESTful APIs</span>
+            <span class="skill-pill">Docker · Kubernetes</span>
+            <span class="skill-pill">Linux</span>
+            <span class="skill-pill">NLP · LLM · Agentic AI</span>
+            <span class="skill-pill">DevOps & MLOps</span>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- EXPERIENCE WITH MOVING DOT PIPELINE -->
+    <section id="experience" class="reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Where I’ve been working.</h2>
+
+      <div class="experience-layout">
+        <!-- Pipeline + dot -->
+        <div class="timeline-rail">
+          <div class="timeline-track" id="expTrack"></div>
+          <div class="timeline-dot" id="expDot"></div>
+        </div>
+
+        <!-- Experience items -->
+        <div class="timeline-list" id="expList">
+          <!-- HII -->
+          <article class="timeline-item" data-index="0">
+            <div class="timeline-title">Software Engineer 1 – HII Ingalls Shipbuilding</div>
+            <div class="timeline-meta">Newport News, VA · 08/2025 – Present</div>
+            <div class="timeline-body">
+              Software developer working on modeling and simulation of Aircraft Carriers. Aiming to
+              enhance the private servers by adding new constraints to deployment and increasing
+              performance by more than 50%.<br/><br/>
+              Developed and unit-tested software in C# and .NET, contributing to Agile sprints and
+              delivering features on time. Collaborated in cross-functional Agile teams to design
+              and implement modeling & simulation software for aircraft carriers.
+            </div>
+            <div class="chips-row">
+              <span class="chip">C# · .NET</span>
+              <span class="chip">Modeling & Simulation</span>
+              <span class="chip">Agile</span>
+              <span class="chip">Secure Systems</span>
+            </div>
+          </article>
+
+          <!-- SR Travel Agency -->
+          <article class="timeline-item" data-index="1">
+            <div class="timeline-title">Software Engineer Intern – SR. Travel Agency</div>
+            <div class="timeline-meta">India · 12/2024 – 07/2025</div>
+            <div class="timeline-body">
+              Developing and maintaining the travel agency’s webpage using TypeScript and JavaScript,
+              integrating real-time flight pricing updates via APIs (Amadeus, Skyscanner, Sabre) and
+              WebSockets for dynamic data retrieval.<br/><br/>
+              Conducting system analysis to optimize frontend performance and enhance user experience.
+              Designing and implementing a 24/7 AI-powered chatbot using Dialogflow/Rasa for automated
+              customer support, integrated with CRM systems (Salesforce, HubSpot) and deploying via
+              AWS Lambda/Firebase for scalability if required.
+            </div>
+            <div class="chips-row">
+              <span class="chip">TypeScript · JavaScript</span>
+              <span class="chip">Amadeus · Skyscanner · Sabre</span>
+              <span class="chip">WebSockets</span>
+              <span class="chip">Dialogflow · Rasa</span>
+              <span class="chip">AWS Lambda · Firebase</span>
+            </div>
+          </article>
+
+          <!-- Hume Center -->
+          <article class="timeline-item" data-index="2">
+            <div class="timeline-title">Machine Learning Researching Intern – Hume Center</div>
+            <div class="timeline-meta">Blacksburg, VA · 05/2024 – 08/2024</div>
+            <div class="timeline-body">
+              Spearheaded research in Physics-Informed Machine Learning (PIML) using NVIDIA Modulus,
+              CUDA Toolkit, and Python to integrate physical laws into machine learning, boosting
+              accuracy and performance.<br/><br/>
+              Studied Physics-Informed Neural Networks (PINNs) and Neural Operators, leveraging
+              physics-based simulations in Linux, Jupyter Notebooks, and Docker environments. Researched
+              Digital Twins for creating accurate and dynamic virtual simulations.
+            </div>
+            <div class="chips-row">
+              <span class="chip">PIML · PINNs · Neural Operators</span>
+              <span class="chip">NVIDIA Modulus · CUDA</span>
+              <span class="chip">Linux · Docker</span>
+              <span class="chip">Digital Twins</span>
+            </div>
+          </article>
+
+          <!-- Kastom Cloud -->
+          <article class="timeline-item" data-index="3">
+            <div class="timeline-title">Software Engineer Intern – Kastom Cloud</div>
+            <div class="timeline-meta">San Francisco, CA (Remote) · 03/2024 – 05/2024</div>
+            <div class="timeline-body">
+              Developed scalable applications using Angular, Node.js, and Ionic, optimizing UI/UX and
+              backend functionality to meet evolving business needs.<br/><br/>
+              Planned AWS integration with services like Lambda and S3 for efficient serverless
+              computing and scalable data storage solutions. Worked with Ionic to develop chatbots
+              and design pages.
+            </div>
+            <div class="chips-row">
+              <span class="chip">Angular · Node.js · Ionic</span>
+              <span class="chip">AWS Lambda · S3</span>
+              <span class="chip">Chatbots</span>
+              <span class="chip">Scalable Apps</span>
+            </div>
+          </article>
+
+          <!-- Additional experience (combined) -->
+          <article class="timeline-item" data-index="4">
+            <div class="timeline-title">Additional Experience</div>
+            <div class="timeline-meta">Virginia Tech & SR. Travels</div>
+            <div class="timeline-body">
+              <strong>Machine Learning Assistant – Oral History Dept. (02/2023–05/2023)</strong><br/>
+              Applied ML for autonomous audio-to-text transcription, developed a Python-based system improving
+              transcription efficiency by 15%, and worked with real-time audio classification using PPO.<br/><br/>
+
+              <strong>Data Reductionist – VT Transportation Institute (03/2023–05/2023)</strong><br/>
+              Observed digital video and parametric data for transportation research, boosting process
+              efficiency by 40% by redesigning data collection structures using Excel and improving
+              data inference time.<br/><br/>
+
+              <strong>Travel-Technician Intern – SR. Travels (06/2022–08/2022)</strong><br/>
+              Streamlined ticketing process by 10% through front-end and back-end development, enhancing Python
+              skills in server development and CRUD operations while collaborating with data analysts.
+            </div>
+            <div class="chips-row">
+              <span class="chip">Python</span>
+              <span class="chip">ML for Audio</span>
+              <span class="chip">Data Analysis</span>
+              <span class="chip">Process Optimization</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> · Designed & built by Shanoor Verma ·
+      <span style="color: var(--muted); font-size: 0.8rem;">
+        US Citizen · Newport News, VA ·
+        <a href="mailto:Shanoor_1220@outlook.com">Shanoor_1220@outlook.com</a> · 540-394-8551
+      </span>
+    </footer>
   </main>
 
-  <footer>
-    © 2025 · Built by Shanoor Verma — AI · Cloud · Software Engineering
-  </footer>
-
-   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 800, once: true });
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16 }
+    );
 
-    // ---- Simple JSON-backed review system using localStorage ----
-    const reviewForm = document.getElementById("reviewForm");
-    const toggleReviewFormBtn = document.getElementById("toggleReviewForm");
-    const reviewsList = document.getElementById("reviewsList");
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    function getStoredReviews() {
-      try {
-        const raw = localStorage.getItem("shanoorReviews");
-        return raw ? JSON.parse(raw) : [];
-      } catch (e) {
-        console.error("Could not parse stored reviews", e);
-        return [];
-      }
-    }
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    function saveReviews(reviews) {
-      localStorage.setItem("shanoorReviews", JSON.stringify(reviews));
-    }
+    // EXPERIENCE TIMELINE DOT ANIMATION
+    const items = document.querySelectorAll(".timeline-item");
+    const dot = document.getElementById("expDot");
+    const track = document.getElementById("expTrack");
 
-    function renderReviews() {
-      const reviews = getStoredReviews();
-      reviewsList.innerHTML = "";
+    function updateTimelineDot() {
+      if (!items.length || !dot || !track) return;
 
-      if (!reviews.length) {
-        reviewsList.innerHTML =
-          '<p style="font-size:0.9rem;color:var(--muted);">No reviews yet. Be the first to add one!</p>';
-        return;
-      }
+      let activeIndex = 0;
+      let minDist = Infinity;
 
-      reviews.forEach((r) => {
-        const card = document.createElement("div");
-        card.className = "review-card";
-        card.innerHTML = `
-          <div class="review-meta">
-            ${r.name} <span>· ${r.role}</span>
-          </div>
-          <div class="review-text">
-            ${r.text}
-          </div>
-        `;
-        reviewsList.appendChild(card);
-      });
-    }
-
-    if (toggleReviewFormBtn && reviewForm) {
-      toggleReviewFormBtn.addEventListener("click", () => {
-        const isVisible = reviewForm.style.display === "block";
-        reviewForm.style.display = isVisible ? "none" : "block";
-        toggleReviewFormBtn.textContent = isVisible ? "+ Add a review" : "Close";
+      items.forEach((item, idx) => {
+        const rect = item.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const dist = Math.abs(center - window.innerHeight / 2);
+        if (dist < minDist) {
+          minDist = dist;
+          activeIndex = idx;
+        }
       });
 
-      reviewForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const name = document.getElementById("reviewName").value.trim();
-        const role = document.getElementById("reviewRole").value.trim();
-        const text = document.getElementById("reviewText").value.trim();
-
-        if (!name || !role || !text) return;
-
-        const reviews = getStoredReviews();
-        reviews.unshift({ name, role, text, createdAt: new Date().toISOString() });
-        saveReviews(reviews);
-        renderReviews();
-
-        reviewForm.reset();
-        reviewForm.style.display = "none";
-        toggleReviewFormBtn.textContent = "+ Add a review";
+      items.forEach((item, idx) => {
+        item.classList.toggle("active", idx === activeIndex);
       });
+
+      const count = items.length;
+      const trackRect = track.getBoundingClientRect();
+      const trackHeight = trackRect.height;
+      const padding = 16;
+      const step = count > 1 ? (trackHeight - 2 * padding) / (count - 1) : 0;
+      const top = padding + step * activeIndex;
+
+      dot.style.top = top + "px";
     }
 
-    // Initial render on page load
-    renderReviews();
+    window.addEventListener("scroll", updateTimelineDot);
+    window.addEventListener("resize", updateTimelineDot);
+    window.addEventListener("load", updateTimelineDot);
   </script>
-</body>
-</html>
-
-
 </body>
 </html>
