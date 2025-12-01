@@ -5,43 +5,347 @@
   <title>Connections & Reviews | Shanoor Verma</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body{margin:0;font-family:"Poppins",sans-serif;background:#020617;color:#f9fafb;}
-    a{color:inherit;text-decoration:none;}
-    .nav{position:sticky;top:0;z-index:10;background:rgba(2,6,23,0.95);border-bottom:1px solid rgba(148,163,184,0.3);}
-    .nav-inner{max-width:1080px;margin:0 auto;padding:0.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
-    .nav-links{display:flex;gap:1.2rem;font-size:0.9rem;color:#9ca3af;}
-    .nav-links a:hover{color:#f9fafb;}
-    .page{max-width:900px;margin:0 auto;padding:2rem 1.5rem 3rem;}
-    .title{font-size:1.9rem;font-weight:600;margin-bottom:0.5rem;}
-    .sub{font-size:0.9rem;color:#9ca3af;margin-bottom:1.6rem;}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;margin-bottom:2rem;}
-    .card{border-radius:18px;background:rgba(15,23,42,0.96);border:1px solid rgba(148,163,184,0.4);padding:1.3rem;}
-    .name{font-weight:600;font-size:0.95rem;margin-bottom:0.2rem;}
-    .role{font-size:0.78rem;color:#9ca3af;margin-bottom:0.6rem;}
-    .text{font-size:0.86rem;color:#e5e7eb;line-height:1.6;}
-    .form{border-radius:18px;background:rgba(15,23,42,0.96);border:1px solid rgba(148,163,184,0.4);padding:1.4rem;}
-    .form h2{font-size:1.1rem;margin-bottom:0.6rem;}
-    .form p{font-size:0.85rem;color:#9ca3af;margin-bottom:1rem;}
-    .form label{display:block;font-size:0.82rem;margin-bottom:0.2rem;}
-    .form input,.form textarea{
-      width:100%;border-radius:12px;border:1px solid rgba(148,163,184,0.6);
-      background:#020617;color:#f9fafb;padding:0.6rem 0.8rem;font-family:inherit;font-size:0.9rem;margin-bottom:0.8rem;
+    :root {
+      --bg: #020617;
+      --card: #0f172a;
+      --border: rgba(148, 163, 184, 0.4);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --accent: #8b5cf6;
+      --accent2: #22d3ee;
     }
-    .form textarea{min-height:110px;resize:vertical;}
-    .btn{
-      padding:0.55rem 1.3rem;border-radius:999px;border:none;
-      background:linear-gradient(135deg,#a855f7,#22d3ee);color:#020617;
-      font-weight:600;font-size:0.9rem;cursor:pointer;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    .btn:hover{opacity:0.95;}
-    @media(max-width:640px){.nav-inner{padding-inline:1rem;}.page{padding-inline:1rem;}}
+
+    body {
+      margin: 0;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2933 0, #020617 40%, #020617 100%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVBAR (same vibe as index) */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, rgba(2,6,23,0.95), rgba(2,6,23,0.4));
+      border-bottom: 1px solid rgba(148,163,184,0.3);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+    }
+
+    .nav-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 45%, #0ea5e9 100%);
+      box-shadow: 0 0 24px rgba(129,140,248,0.7);
+    }
+
+    .nav-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .nav-subtitle {
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #8b5cf6, #22d3ee);
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* PAGE LAYOUT */
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    .title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 1.4rem;
+    }
+
+    .sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 0.3rem;
+      margin-bottom: 2rem;
+    }
+
+    /* CONNECTIONS HERO (wavy line + avatars) */
+    .connections-hero {
+      margin-top: 1rem;
+      margin-bottom: 2.5rem;
+      border-radius: 26px;
+      padding: 2.2rem 1.4rem 2.6rem;
+      background: radial-gradient(circle at top, rgba(129,140,248,0.18), transparent 55%),
+                  linear-gradient(to bottom, #020617, #020617);
+      border: 1px solid rgba(148,163,184,0.4);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .connections-upper {
+      position: relative;
+      height: 150px;
+    }
+
+    .connections-path {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .connections-avatar {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.9);
+      box-shadow: 0 0 16px rgba(15,23,42,0.9);
+      background: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      transform: translate(-50%, -50%);
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .connections-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .connections-avatar.main {
+      width: 78px;
+      height: 78px;
+      border-width: 4px;
+      z-index: 2;
+      animation-delay: 0.5s;
+    }
+
+    .connections-avatar.small {
+      width: 52px;
+      height: 52px;
+      opacity: 0.9;
+    }
+
+    .connections-avatar:nth-child(2) { animation-delay: 0.2s; }
+    .connections-avatar:nth-child(3) { animation-delay: 0.4s; }
+    .connections-avatar:nth-child(4) { animation-delay: 0.6s; }
+    .connections-avatar:nth-child(5) { animation-delay: 0.8s; }
+    .connections-avatar:nth-child(6) { animation-delay: 1s; }
+
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -52%); }
+      50% { transform: translate(-50%, -48%); }
+    }
+
+    .connections-text {
+      text-align: center;
+      margin-top: 1.4rem;
+    }
+
+    .connections-text h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .connections-text p {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+
+    .connections-cta {
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+      color: #c4c4ff;
+    }
+
+    .connections-cta a {
+      font-weight: 500;
+      text-decoration: underline;
+    }
+
+    /* TESTIMONIAL GRID + FORM */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      border-radius: 18px;
+      background: rgba(15,23,42,0.96);
+      border: 1px solid var(--border);
+      padding: 1.3rem;
+    }
+
+    .name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .role {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .text {
+      font-size: 0.86rem;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    .form {
+      border-radius: 18px;
+      background: rgba(15,23,42,0.96);
+      border: 1px solid var(--border);
+      padding: 1.4rem;
+    }
+
+    .form h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .form p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .form label {
+      display: block;
+      font-size: 0.82rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .form input,
+    .form textarea {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: #020617;
+      color: var(--text);
+      padding: 0.6rem 0.8rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .form textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .btn {
+      padding: 0.55rem 1.3rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #a855f7, #22d3ee);
+      color: #020617;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      opacity: 0.96;
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner { padding-inline: 1rem; }
+      .page { padding-inline: 1rem; }
+      .connections-hero { padding-inline: 1rem; }
+      .connections-upper { height: 140px; }
+    }
   </style>
 </head>
 <body>
+  <!-- NAV -->
   <header class="nav">
     <div class="nav-inner">
-      <div><strong>Shanoor Verma</strong> · Connections</div>
+      <div class="nav-left">
+        <div class="nav-logo"></div>
+        <div>
+          <div class="nav-title">Shanoor Verma</div>
+          <div class="nav-subtitle">Software Engineer · AI/ML · Cloud · Cybersecurity</div>
+        </div>
+      </div>
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
@@ -52,34 +356,85 @@
   </header>
 
   <main class="page">
-    <h1 class="title">Connections & Reviews</h1>
+    <!-- CONNECTIONS HERO -->
+    <section class="connections-hero">
+      <div class="connections-upper">
+        <!-- Wavy background line -->
+        <svg class="connections-path" viewBox="0 0 1000 200" preserveAspectRatio="none">
+          <path d="M -50 140 Q 120 40 260 120 T 540 120 T 820 120 T 1100 120"
+                fill="none"
+                stroke="rgba(148,163,184,0.5)"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+
+        <!-- Avatars (replace src with real people when you have them) -->
+        <!-- Left small -->
+        <div class="connections-avatar small" style="top: 72%; left: 10%;">
+          <img src="https://via.placeholder.com/80x80.png?text=A" alt="Connection 1" />
+        </div>
+
+        <!-- Upper left small -->
+        <div class="connections-avatar small" style="top: 35%; left: 28%;">
+          <img src="https://via.placeholder.com/80x80.png?text=B" alt="Connection 2" />
+        </div>
+
+        <!-- MAIN center -->
+        <div class="connections-avatar main" style="top: 40%; left: 50%;">
+          <img src="https://via.placeholder.com/120x120.png?text=SV" alt="Shanoor" />
+        </div>
+
+        <!-- Upper right small -->
+        <div class="connections-avatar small" style="top: 30%; left: 72%;">
+          <img src="https://via.placeholder.com/80x80.png?text=C" alt="Connection 3" />
+        </div>
+
+        <!-- Lower right small -->
+        <div class="connections-avatar small" style="top: 75%; left: 88%;">
+          <img src="https://via.placeholder.com/80x80.png?text=D" alt="Connection 4" />
+        </div>
+      </div>
+
+      <div class="connections-text">
+        <h2>Connections</h2>
+        <p>
+          An evolving list of people I’ve worked with, learned from, and hope to collaborate with again.
+        </p>
+        <div class="connections-cta">
+          Want to leave a note? Use the form below or reach out on LinkedIn.
+        </div>
+      </div>
+    </section>
+
+    <h1 class="title">Feedback & Reviews</h1>
     <p class="sub">
-      A space for teammates, managers, and collaborators to share how we’ve worked together.
-      I periodically add selected feedback here.
+      A space for managers, teammates, and collaborators to share how we’ve worked together.
+      I periodically highlight selected feedback here.
     </p>
 
-    <!-- Example testimonials – edit these as you receive real ones -->
+    <!-- EXAMPLE TESTIMONIALS – update with real ones later -->
     <div class="grid">
       <div class="card">
         <div class="name">[Manager Name]</div>
         <div class="role">Manager · HII Ingalls Shipbuilding</div>
         <div class="text">
           “Shanoor consistently delivered high-quality features in a complex simulation environment,
-          showing strong ownership, technical depth, and attention to secure design.”
+          demonstrating strong ownership, fast learning, and a deep understanding of secure design.”
         </div>
       </div>
 
       <div class="card">
-        <div class="name">[Colleague Name]</div>
+        <div class="name">[Teammate Name]</div>
         <div class="role">Teammate · SR Travel Agency Platform</div>
         <div class="text">
-          “Working with Shanoor on our real-time travel booking system was seamless. He quickly
-          connected business needs to technical decisions and improved our architecture significantly.”
+          “Working with Shanoor on our real-time travel booking system was seamless. He quickly connected
+          business needs to technical decisions and made the architecture more robust.”
         </div>
       </div>
     </div>
 
-    <!-- Simple review submission form (sends via email) -->
+    <!-- REVIEW SUBMISSION FORM -->
     <div class="form">
       <h2>Have we worked together?</h2>
       <p>
