@@ -5,6 +5,7 @@
   <title>Shanoor Verma | Software Engineer & ML</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Fonts + Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -45,7 +46,7 @@
       text-decoration: none;
     }
 
-    /* Navbar */
+    /* NAVBAR */
     .nav {
       position: sticky;
       top: 0;
@@ -118,4 +119,723 @@
       color: var(--text);
     }
 
-    .nav-links a:hover
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* PAGE LAYOUT */
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1.8rem 1.5rem 3rem;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 2.4rem;
+      align-items: center;
+      min-height: calc(100vh - 80px);
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3vw + 1rem, 3.1rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #a855f7, #22d3ee, #f97316);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 0.96rem;
+      color: var(--muted);
+      max-width: 32rem;
+      line-height: 1.6;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .tag-pill {
+      font-size: 0.76rem;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: radial-gradient(circle at top left, rgba(148,163,184,0.18), transparent 60%);
+      color: #e5e7eb;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      align-items: center;
+    }
+
+    .btn-solid,
+    .btn-ghost {
+      font-size: 0.9rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-solid {
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 40%, #22d3ee 100%);
+      box-shadow: 0 12px 30px rgba(15,23,42,0.9);
+      color: #0b1020;
+      font-weight: 600;
+    }
+
+    .btn-solid:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(15,23,42,1);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.7);
+      color: #e5e7eb;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15,23,42,0.95);
+      transform: translateY(-1px);
+    }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 360px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148,163,184,0.4);
+      background: radial-gradient(circle at 20% 0, rgba(148,163,184,0.16), transparent 50%),
+                  linear-gradient(145deg, rgba(15,23,42,0.9), rgba(15,23,42,1));
+      box-shadow: var(--shadow-soft);
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-inner {
+      border-radius: calc(var(--radius-xl) - 8px);
+      border: 1px solid rgba(148,163,184,0.4);
+      padding: 1.3rem;
+      background: radial-gradient(circle at top right, rgba(129,140,248,0.24), transparent 60%);
+    }
+
+    .hero-chip {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-role {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .hero-badges span {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(129,140,248,0.6);
+    }
+
+    /* CARDS / GRIDS */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1.8rem;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(148,163,184,0.12), transparent 60%),
+                  rgba(15,23,42,0.92);
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.4rem;
+      box-shadow: 0 12px 30px rgba(15,23,42,0.75);
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.8rem;
+    }
+
+    .skill-pill {
+      font-size: 0.75rem;
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      color: #e5e7eb;
+    }
+
+    /* EXPERIENCE SECTION WITH PIPELINE */
+    .experience-layout {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .timeline-rail {
+      position: relative;
+      width: 36px;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .timeline-track {
+      position: relative;
+      width: 4px;
+      background: linear-gradient(to bottom, rgba(148,163,184,0.4), rgba(148,163,184,0.1));
+      border-radius: 999px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      flex: 1;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      transform: translateX(-50%);
+      background: radial-gradient(circle at 30% 0, #f97316, #a855f7 60%, #22d3ee);
+      box-shadow: 0 0 16px rgba(129,140,248,0.85);
+      transition: top 0.3s ease-out;
+    }
+
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.98);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(129,140,248,0.24), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .timeline-item.active::before {
+      opacity: 1;
+    }
+
+    .timeline-title {
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .timeline-meta {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-body {
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.5;
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.4rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
+    }
+
+    footer {
+      padding-top: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid rgba(15,23,42,0.9);
+      margin-top: 2rem;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+        min-height: auto;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .nav-inner {
+        padding-inline: 1rem;
+      }
+
+      .page {
+        padding-inline: 1rem;
+      }
+
+      .experience-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .timeline-rail {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .grid-2 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-logo"></div>
+        <div>
+          <div class="nav-title">Shanoor Verma</div>
+          <div class="nav-subtitle">Software Engineer · AI/ML · Cloud · Cybersecurity</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="connect.html">Connect</a>
+        <a href="connections.html">Connections</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left reveal">
+        <div class="section-label">Portfolio</div>
+        <h1 class="hero-title">
+          Engineering <span class="hero-highlight">intelligent, secure</span><br /> software systems.
+        </h1>
+        <p class="hero-sub">
+          I’m a U.S. citizen Software Engineer based in Newport News, VA, specializing in modeling & simulation,
+          AI/ML, and cloud-native systems. I’ve worked on U.S. Navy aircraft carrier simulations, physics-informed
+          ML research, real-time travel platforms, and chatbots powered by modern AI.
+        </p>
+
+        <div class="hero-tags">
+          <span class="tag-pill">Software Engineering</span>
+          <span class="tag-pill">AI / ML / PIML</span>
+          <span class="tag-pill">Cloud & DevOps</span>
+          <span class="tag-pill">Cyber & Secure Systems</span>
+        </div>
+
+        <div class="hero-buttons">
+          <a href="projects.html" class="btn-solid">
+            View Projects <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="connect.html" class="btn-ghost">
+            Let’s connect <i class="fa-regular fa-paper-plane"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-chip">Currently</div>
+            <div class="hero-role">Software Engineer 1 · HII Ingalls Shipbuilding</div>
+            <div class="hero-meta">
+              Newport News, VA · U.S. Navy Aircraft Carrier Simulation Systems
+            </div>
+            <p class="timeline-body">
+              Software developer working on modeling and simulation of aircraft carriers, enhancing private
+              servers by adding new deployment constraints and improving performance by more than 50%. I work
+              primarily in C# and .NET within Agile teams, delivering features reliably and securely.
+            </p>
+            <div class="hero-badges">
+              <span>C# · .NET</span>
+              <span>Modeling & Simulation</span>
+              <span>Secure Systems</span>
+              <span>Agile Delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT + EDUCATION -->
+    <section id="about" class="reveal">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Who I am.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>About me</h3>
+          <p>
+            I’m a Computer Engineering graduate from Virginia Tech with a concentration in
+            Machine Learning / Artificial Intelligence. I like building systems that sit at the
+            intersection of high-performance software, ML, and security.
+          </p>
+          <p style="margin-top: 0.8rem;">
+            My experience ranges from carrier-grade simulations and travel platforms with real-time APIs,
+            to Physics-Informed ML (PIML), digital twins, and AI-powered chatbots integrated into real
+            business workflows.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Education</h3>
+          <p><strong>Virginia Tech, College of Engineering</strong></p>
+          <p style="font-size: 0.85rem; margin-top: 0.25rem;">
+            Bachelor of Science in Computer Engineering<br/>
+            Concentration: Machine Learning / Artificial Intelligence
+          </p>
+          <div class="skills-grid" style="margin-top: 0.9rem;">
+            <span class="skill-pill">Data Structures & Algorithms</span>
+            <span class="skill-pill">Machine Learning / AI</span>
+            <span class="skill-pill">Modeling & Simulation</span>
+            <span class="skill-pill">Numerical Methods</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">What I work with.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Languages & Core</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">C/C++</span>
+            <span class="skill-pill">C#</span>
+            <span class="skill-pill">TypeScript · JavaScript</span>
+            <span class="skill-pill">HTML / CSS</span>
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">Data Structures & Algorithms</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Frameworks, ML & Cloud</h3>
+          <div class="skills-grid">
+            <span class="skill-pill">.NET Framework</span>
+            <span class="skill-pill">TensorFlow · PyTorch</span>
+            <span class="skill-pill">Scikit-learn</span>
+            <span class="skill-pill">NVIDIA Modulus · CUDA</span>
+            <span class="skill-pill">Node.js · React.js · Angular</span>
+            <span class="skill-pill">RESTful APIs</span>
+            <span class="skill-pill">Docker · Kubernetes</span>
+            <span class="skill-pill">Linux</span>
+            <span class="skill-pill">NLP · LLM · Agentic AI</span>
+            <span class="skill-pill">DevOps & MLOps</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE WITH MOVING DOT PIPELINE -->
+    <section id="experience" class="reveal">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Where I’ve been working.</h2>
+
+      <div class="experience-layout">
+        <!-- Pipeline + dot -->
+        <div class="timeline-rail">
+          <div class="timeline-track" id="expTrack"></div>
+          <div class="timeline-dot" id="expDot"></div>
+        </div>
+
+        <!-- Experience items -->
+        <div class="timeline-list" id="expList">
+          <!-- HII -->
+          <article class="timeline-item" data-index="0">
+            <div class="timeline-title">Software Engineer 1 – HII Ingalls Shipbuilding</div>
+            <div class="timeline-meta">Newport News, VA · 08/2025 – Present</div>
+            <div class="timeline-body">
+              Software developer working on modeling and simulation of Aircraft Carriers. Aiming to
+              enhance the private servers by adding new constraints to deployment and increasing
+              performance by more than 50%.<br/><br/>
+              Developed and unit-tested software in C# and .NET, contributing to Agile sprints and
+              delivering features on time. Collaborated in cross-functional Agile teams to design
+              and implement modeling & simulation software for aircraft carriers.
+            </div>
+            <div class="chips-row">
+              <span class="chip">C# · .NET</span>
+              <span class="chip">Modeling & Simulation</span>
+              <span class="chip">Agile</span>
+              <span class="chip">Secure Systems</span>
+            </div>
+          </article>
+
+          <!-- SR Travel Agency -->
+          <article class="timeline-item" data-index="1">
+            <div class="timeline-title">Software Engineer Intern – SR. Travel Agency</div>
+            <div class="timeline-meta">India · 12/2024 – 07/2025</div>
+            <div class="timeline-body">
+              Developing and maintaining the travel agency’s webpage using TypeScript and JavaScript,
+              integrating real-time flight pricing updates via APIs (Amadeus, Skyscanner, Sabre) and
+              WebSockets for dynamic data retrieval.<br/><br/>
+              Conducting system analysis to optimize frontend performance and enhance user experience.
+              Designing and implementing a 24/7 AI-powered chatbot using Dialogflow/Rasa for automated
+              customer support, integrated with CRM systems (Salesforce, HubSpot) and deploying via
+              AWS Lambda/Firebase for scalability if required.
+            </div>
+            <div class="chips-row">
+              <span class="chip">TypeScript · JavaScript</span>
+              <span class="chip">Amadeus · Skyscanner · Sabre</span>
+              <span class="chip">WebSockets</span>
+              <span class="chip">Dialogflow · Rasa</span>
+              <span class="chip">AWS Lambda · Firebase</span>
+            </div>
+          </article>
+
+          <!-- Hume Center -->
+          <article class="timeline-item" data-index="2">
+            <div class="timeline-title">Machine Learning Researching Intern – Hume Center</div>
+            <div class="timeline-meta">Blacksburg, VA · 05/2024 – 08/2024</div>
+            <div class="timeline-body">
+              Spearheaded research in Physics-Informed Machine Learning (PIML) using NVIDIA Modulus,
+              CUDA Toolkit, and Python to integrate physical laws into machine learning, boosting
+              accuracy and performance.<br/><br/>
+              Studied Physics-Informed Neural Networks (PINNs) and Neural Operators, leveraging
+              physics-based simulations in Linux, Jupyter Notebooks, and Docker environments. Researched
+              Digital Twins for creating accurate and dynamic virtual simulations.
+            </div>
+            <div class="chips-row">
+              <span class="chip">PIML · PINNs · Neural Operators</span>
+              <span class="chip">NVIDIA Modulus · CUDA</span>
+              <span class="chip">Linux · Docker</span>
+              <span class="chip">Digital Twins</span>
+            </div>
+          </article>
+
+          <!-- Kastom Cloud -->
+          <article class="timeline-item" data-index="3">
+            <div class="timeline-title">Software Engineer Intern – Kastom Cloud</div>
+            <div class="timeline-meta">San Francisco, CA (Remote) · 03/2024 – 05/2024</div>
+            <div class="timeline-body">
+              Developed scalable applications using Angular, Node.js, and Ionic, optimizing UI/UX and
+              backend functionality to meet evolving business needs.<br/><br/>
+              Planned AWS integration with services like Lambda and S3 for efficient serverless
+              computing and scalable data storage solutions. Worked with Ionic to develop chatbots
+              and design pages.
+            </div>
+            <div class="chips-row">
+              <span class="chip">Angular · Node.js · Ionic</span>
+              <span class="chip">AWS Lambda · S3</span>
+              <span class="chip">Chatbots</span>
+              <span class="chip">Scalable Apps</span>
+            </div>
+          </article>
+
+          <!-- Additional experience (combined) -->
+          <article class="timeline-item" data-index="4">
+            <div class="timeline-title">Additional Experience</div>
+            <div class="timeline-meta">Virginia Tech & SR. Travels</div>
+            <div class="timeline-body">
+              <strong>Machine Learning Assistant – Oral History Dept. (02/2023–05/2023)</strong><br/>
+              Applied ML for autonomous audio-to-text transcription, developed a Python-based system improving
+              transcription efficiency by 15%, and worked with real-time audio classification using PPO.<br/><br/>
+
+              <strong>Data Reductionist – VT Transportation Institute (03/2023–05/2023)</strong><br/>
+              Observed digital video and parametric data for transportation research, boosting process
+              efficiency by 40% by redesigning data collection structures using Excel and improving
+              data inference time.<br/><br/>
+
+              <strong>Travel-Technician Intern – SR. Travels (06/2022–08/2022)</strong><br/>
+              Streamlined ticketing process by 10% through front-end and back-end development, enhancing Python
+              skills in server development and CRUD operations while collaborating with data analysts.
+            </div>
+            <div class="chips-row">
+              <span class="chip">Python</span>
+              <span class="chip">ML for Audio</span>
+              <span class="chip">Data Analysis</span>
+              <span class="chip">Process Optimization</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> · Designed & built by Shanoor Verma ·
+      <span style="color: var(--muted); font-size: 0.8rem;">
+        US Citizen · Newport News, VA ·
+        <a href="mailto:Shanoor_1220@outlook.com">Shanoor_1220@outlook.com</a> · 540-394-8551
+      </span>
+    </footer>
+  </main>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.16 }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // EXPERIENCE TIMELINE DOT ANIMATION
+    const items = document.querySelectorAll(".timeline-item");
+    const dot = document.getElementById("expDot");
+    const track = document.getElementById("expTrack");
+
+    function updateTimelineDot() {
+      if (!items.length || !dot || !track) return;
+
+      let activeIndex = 0;
+      let minDist = Infinity;
+
+      items.forEach((item, idx) => {
+        const rect = item.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const dist = Math.abs(center - window.innerHeight / 2);
+        if (dist < minDist) {
+          minDist = dist;
+          activeIndex = idx;
+        }
+      });
+
+      items.forEach((item, idx) => {
+        item.classList.toggle("active", idx === activeIndex);
+      });
+
+      const count = items.length;
+      const trackRect = track.getBoundingClientRect();
+      const trackHeight = trackRect.height;
+      const padding = 16;
+      const step = count > 1 ? (trackHeight - 2 * padding) / (count - 1) : 0;
+      const top = padding + step * activeIndex;
+
+      dot.style.top = top + "px";
+    }
+
+    window.addEventListener("scroll", updateTimelineDot);
+    window.addEventListener("resize", updateTimelineDot);
+    window.addEventListener("load", updateTimelineDot);
+  </script>
+</body>
+</html>
