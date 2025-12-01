@@ -681,71 +681,56 @@
 
   <main class="page">
     <!-- HERO -->
-    <section class="hero">
-      <div class="hero-left reveal">
-        <div class="section-label">Portfolio</div>
+       <section id="home" class="hero">
+      <div data-aos="fade-right">
+        <div class="hero-kicker">Software Engineer · AI / ML · Cloud</div>
         <h1 class="hero-title">
-          Engineering <span class="hero-highlight">intelligent, secure</span><br /> software systems.
+          Hi, I'm <span>Shanoor</span> <br />
+          I build reliable systems & smart AI.
         </h1>
-        <p class="hero-sub">
-          I’m a U.S. citizen Software Engineer based in Newport News, VA, specializing in modeling & simulation,
-          AI/ML, and cloud-native systems. I’ve worked on U.S. Navy aircraft carrier simulations, physics-informed
-          ML research, real-time travel platforms, and chatbots powered by modern AI.
+        <p class="hero-subtitle">
+          Computer Engineering @ Virginia Tech · Software Developer working on modeling & simulation,
+          secure backends and ML-driven systems. Also obsessed with building side brands & products.
         </p>
 
-        <div class="hero-tags">
-          <span class="tag-pill">Software Engineering</span>
-          <span class="tag-pill">AI / ML / PIML</span>
-          <span class="tag-pill">Cloud & DevOps</span>
-          <span class="tag-pill">Cyber & Secure Systems</span>
+        <div class="hero-badge-row">
+          <div class="hero-badge">C# · .NET · C++</div>
+          <div class="hero-badge">Python · PyTorch · ML</div>
+          <div class="hero-badge">Azure DevOps · CI/CD</div>
+          <div class="hero-badge">Cloud · Kubernetes · Docker</div>
         </div>
 
-        <div class="hero-buttons">
-          <a href="projects.html" class="btn-solid">
-            View Projects <i class="fa-solid fa-arrow-right"></i>
-          </a>
-          <a href="connect.html" class="btn-ghost">
-            Let’s connect <i class="fa-regular fa-paper-plane"></i>
-          </a>
+        <div class="hero-cta-row">
+          <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+            View Projects →
+          </button>
+          <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            Let's Connect
+          </button>
         </div>
+
+        <div class="hero-meta">
+          Currently building secure simulation tools at HII · Exploring Digital Twins, PIML & GenAI on the side.
+        </div>
+
+        <a class="hero-scroll" href="#experience">
+          <span>↓</span> Scroll to experience
+        </a>
       </div>
 
-      <div class="hero-right reveal">
+      <div class="hero-image-wrap" data-aos="fade-left">
+        <div class="hero-glow"></div>
         <div class="hero-card">
           <div class="hero-card-inner">
-            <div class="hero-chip">Currently</div>
-            <div class="hero-role">Software Engineer 1 · HII Ingalls Shipbuilding</div>
-            <div class="hero-meta">
-              Newport News, VA · U.S. Navy Aircraft Carrier Simulation Systems
-            </div>
-
-            <!-- PROFILE AVATAR -->
-            <div class="hero-avatar-row">
-              <div class="hero-avatar">
-                <img src="profile.jpg" alt="Shanoor Verma" />
-              </div>
-              <div class="hero-avatar-text">
-                Building secure, high-performance modeling & simulation systems
-                while growing deeper into AI/ML and cloud.
-              </div>
-            </div>
-
-            <p class="timeline-body">
-              Software developer working on modeling and simulation of aircraft carriers, enhancing private
-              servers by adding new deployment constraints and improving performance by more than 50%. I work
-              primarily in C# and .NET within Agile teams, delivering features reliably and securely.
-            </p>
-            <div class="hero-badges">
-              <span>C# · .NET</span>
-              <span>Modeling & Simulation</span>
-              <span>Secure Systems</span>
-              <span>Agile Delivery</span>
-            </div>
+            <!-- 🔁 Replace this src with your actual image path -->
+            <img src="images/profile.jpg" alt="Photo of Shanoor Verma" />
+            <img src="profile.jpg" alt="Photo of Shanoor Verma" />
+            <div class="hero-tag">Ship models · Secure servers · AI side quests</div>
+            <div class="hero-chip">Portfolio 2025</div>
           </div>
         </div>
       </div>
     </section>
-
     <!-- ABOUT + EDUCATION -->
     <section id="about" class="reveal">
       <div class="section-label">About</div>
