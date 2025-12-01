@@ -13,13 +13,13 @@
     body {
       background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
       font-family: "Poppins", sans-serif;
-      color: #f9fafb; /* brighter text */
+      color: #f9fafb;
       margin: 0;
       padding: 0;
     }
 
     header {
-      padding: 22px 20px;
+      padding: 22px 20px 10px;
       text-align: center;
       font-size: 2rem;
       font-weight: 600;
@@ -35,7 +35,35 @@
       color: #9ca3af;
       text-align: center;
       margin-top: 6px;
-      margin-bottom: 0;
+      margin-bottom: 10px;
+    }
+
+    /* BACK BUTTON */
+    .back-wrapper {
+      width: 100%;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(148,163,184,0.35);
+      border-radius: 999px;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: 0.25s ease;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+    }
+
+    .back-btn:hover {
+      background: rgba(255,255,255,0.18);
+      transform: translateY(-2px);
     }
 
     .projects-container {
@@ -70,7 +98,6 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 4px;
     }
 
     .project-icon {
@@ -79,43 +106,33 @@
       border-radius: 999px;
       background: radial-gradient(circle at 30% 0, #a855f7, #22d3ee 60%, #f97316 100%);
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       box-shadow: 0 0 18px rgba(56,189,248,0.8);
-      flex-shrink: 0;
-    }
-
-    .project-icon i {
-      color: #020617;
-      font-size: 1.2rem;
     }
 
     .project-title {
       font-size: 1.15rem;
       font-weight: 600;
-      margin: 0;
-      color: #f9fafb; /* bright */
+      color: #f9fafb;
     }
 
     .project-tagline {
       font-size: 0.8rem;
       color: #9ca3af;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
     }
 
     .project-desc {
       font-size: 0.95rem;
-      color: #e5e7eb; /* brighter */
+      color: #e5e7eb;
       line-height: 1.6;
-      margin-top: 4px;
-      margin-bottom: 8px;
     }
 
     .project-meta {
       font-size: 0.78rem;
       color: #9ca3af;
-      margin-bottom: 8px;
     }
 
     .project-link {
@@ -125,29 +142,18 @@
       padding: 9px 15px;
       background: linear-gradient(120deg, #9333ea, #3b82f6);
       color: white;
-      text-decoration: none;
       border-radius: 999px;
+      text-decoration: none;
       font-size: 0.88rem;
       font-weight: 500;
       margin-top: auto;
-      align-self: flex-start;
       transition: 0.22s ease;
       box-shadow: 0 10px 25px rgba(15,23,42,0.9);
     }
 
-    .project-link i {
-      font-size: 0.9rem;
-    }
-
     .project-link:hover {
       opacity: 0.9;
-      transform: translateY(-1px) scale(1.02);
-    }
-
-    @media (max-width: 600px) {
-      header {
-        font-size: 1.5rem;
-      }
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -159,97 +165,83 @@
   <p class="subtitle">Selected work in AI, ML, secure systems & creative tooling.</p>
 </header>
 
+<div class="back-wrapper">
+  <a href="index.html" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back to Home
+  </a>
+</div>
+
 <div class="projects-container">
 
   <!-- Project 1 -->
   <div class="project-card">
     <div class="project-header">
-      <div class="project-icon">
-        <i class="fa-solid fa-brain"></i>
-      </div>
+      <div class="project-icon"><i class="fa-solid fa-brain"></i></div>
       <div>
         <div class="project-title">Physics-Informed Neural Operators</div>
-        <div class="project-tagline">PDE · SURROGATE MODELING</div>
+        <div class="project-tagline">PDE · Surrogate Modeling</div>
       </div>
     </div>
     <div class="project-desc">
-      Surrogate modeling using PINO, DeepONet, and NVIDIA Modulus to solve PDE-based Darcy flow with physics constraints,
-      enabling faster inference while respecting governing equations.
+      Surrogate modeling using PINO, DeepONet, and NVIDIA Modulus for PDE-based Darcy flow simulations.
     </div>
-    <div class="project-meta">
-      Python · NVIDIA Modulus · PIML · Neural Operators
-    </div>
-    <a class="project-link" href="https://github.com/shanoor12v/PINO-DarcyFlow" target="_blank" rel="noopener noreferrer">
-      <span>View Project</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    <div class="project-meta">Python · NVIDIA Modulus · PIML</div>
+    <a class="project-link" href="https://github.com/shanoor12v/PINO-DarcyFlow" target="_blank">
+      View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
   </div>
 
   <!-- Project 2 -->
   <div class="project-card">
     <div class="project-header">
-      <div class="project-icon">
-        <i class="fa-solid fa-shield-halved"></i>
-      </div>
+      <div class="project-icon"><i class="fa-solid fa-shield-halved"></i></div>
       <div>
-        <div class="project-title">Prompt Classification using PPO + RoBERTa</div>
-        <div class="project-tagline">NLP · REINFORCEMENT LEARNING</div>
+        <div class="project-title">Prompt Classifier — PPO + RoBERTa</div>
+        <div class="project-tagline">NLP · Reinforcement Learning</div>
       </div>
     </div>
     <div class="project-desc">
-      RL fine-tuning on RoBERTa using PPO with HuggingFace TRL to classify and flag sensitive or risky prompts, acting as
-      a safety layer around LLMs.
+      RLHF-style PPO fine-tuning for sensitive text detection using HuggingFace TRL.
     </div>
-    <div class="project-meta">
-      Python · HuggingFace TRL · RoBERTa · PPO
-    </div>
-    <a class="project-link" href="https://github.com/shanoor12v/Prompt-Classifier-PPO" target="_blank" rel="noopener noreferrer">
-      <span>View Project</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    <div class="project-meta">Python · TRL · PPO · RoBERTa</div>
+    <a class="project-link" href="https://github.com/shanoor12v/Prompt-Classifier-PPO" target="_blank">
+      View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
   </div>
 
   <!-- Project 3 -->
   <div class="project-card">
     <div class="project-header">
-      <div class="project-icon">
-        <i class="fa-solid fa-ship"></i>
-      </div>
+      <div class="project-icon"><i class="fa-solid fa-ship"></i></div>
       <div>
         <div class="project-title">YOLOv5 Ship Detection</div>
-        <div class="project-tagline">COMPUTER VISION · TRACKING</div>
+        <div class="project-tagline">Computer Vision · Tracking</div>
       </div>
     </div>
     <div class="project-desc">
-      Custom YOLOv5 model fine-tuned to detect ships, estimate direction and infer relative motion using domain-specific
-      imagery and tracking logic.
+      Custom-trained YOLOv5 model for detecting ships, direction, and velocity estimation.
     </div>
-    <div class="project-meta">
-      Python · YOLOv5 · OpenCV · Object Detection
-    </div>
-    <a class="project-link" href="https://github.com/shanoor12v/Ship-Detection-YOLOv5" target="_blank" rel="noopener noreferrer">
-      <span>View Project</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    <div class="project-meta">Python · YOLOv5 · OpenCV</div>
+    <a class="project-link" href="https://github.com/shanoor12v/Ship-Detection-YOLOv5" target="_blank">
+      View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
   </div>
 
   <!-- Project 4 -->
   <div class="project-card">
     <div class="project-header">
-      <div class="project-icon">
-        <i class="fa-solid fa-wand-magic-sparkles"></i>
-      </div>
+      <div class="project-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
       <div>
-        <div class="project-title">The Brand Craft – Social Media Engine</div>
-        <div class="project-tagline">CREATIVE TOOLS · AUTOMATION</div>
+        <div class="project-title">The Brand Craft — Social Media Engine</div>
+        <div class="project-tagline">Creative Tools · Automation</div>
       </div>
     </div>
     <div class="project-desc">
-      A lightweight internal tooling system for brand content planning – carousels, color palettes, hooks, and auto-story
-      scaffolding built with HTML/CSS/JS.
+      A mini content planning engine for designing carousels, palettes, hooks and auto-story layouts.
     </div>
-    <div class="project-meta">
-      HTML · CSS · JavaScript · Content Systems
-    </div>
-    <a class="project-link" href="https://github.com/shanoor12v/TheBrandCraft" target="_blank" rel="noopener noreferrer">
-      <span>View Project</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    <div class="project-meta">HTML · CSS · JS</div>
+    <a class="project-link" href="https://github.com/shanoor12v/TheBrandCraft" target="_blank">
+      View Project <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
   </div>
 
