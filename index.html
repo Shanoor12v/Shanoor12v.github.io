@@ -132,56 +132,65 @@
     }
 
     /******** EXPERIENCE FIXED & CLEAN ********/
+.timeline {
+  position: relative;
+  padding-left: 3.2rem;
+  margin-top: 1.2rem;
+}
 
-    .timeline {
-      position: relative;
-      padding-left: 2.8rem;
-    }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 1.7rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+}
 
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 1.4rem;
-      top: 0;
-      bottom: 0;
-      width: 3px;
-      border-radius: 10px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-    }
+.timeline-item {
+  position: relative;
+  margin-bottom: 2.8rem;
+  min-height: 60px;
+  padding-bottom: 0.8rem;
+}
 
-    .timeline-item {
-      position: relative;
-      margin-bottom: 3rem;
-    }
+.timeline-dot {
+  position: absolute;
+  top: 6px;
+  left: 1.25rem;
+  width: 14px;
+  height: 14px;
+  background: #050816;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  z-index: 10;
+}
 
-    .timeline-dot {
-      position: absolute;
-      left: 1.17rem;
-      width: 13px;
-      height: 13px;
-      background: #050816;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 15px rgba(124, 58, 237, 1);
-    }
+.timeline-content {
+  margin-left: 1.4rem;
+}
 
-    .timeline-role {
-      font-size: 1rem;
-      font-weight: 500;
-    }
+.timeline-role {
+  font-size: 1rem;
+  font-weight: 600;
+}
 
-    .timeline-company {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 4px;
-    }
+.timeline-company {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
 
-    .timeline-desc {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.45;
-    }
+.timeline-desc {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 
     /******** PROJECTS ********/
 
@@ -222,6 +231,131 @@
       text-align: center;
       font-size: 0.8rem;
       opacity: 0.8;
+    }
+    /* REVIEWS / CONNECTIONS */
+    .reviews-wrapper {
+      margin-top: 1rem;
+      padding: 1.2rem 1.4rem;
+      border-radius: 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .reviews-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .reviews-header p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    .review-btn {
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: linear-gradient(135deg, #a855f7, #f97316);
+      color: #f9fafb;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.85);
+    }
+
+    .review-form {
+      display: none;
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 0.6rem;
+    }
+
+    .review-form-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .review-form input,
+    .review-form textarea {
+      flex: 1 1 180px;
+      border-radius: 0.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #020617;
+      color: var(--text);
+      padding: 0.55rem 0.7rem;
+      font-family: inherit;
+      font-size: 0.86rem;
+    }
+
+    .review-form textarea {
+      width: 100%;
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .review-form button[type="submit"] {
+      margin-top: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: none;
+      background: #22c55e;
+      color: #020617;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .reviews-list {
+      margin-top: 0.6rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.7rem;
+    }
+
+    .review-card {
+      padding: 0.7rem 0.8rem;
+      border-radius: 0.8rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .review-meta {
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .review-meta span {
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .review-text {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+      line-height: 1.45;
+    }
+
+    .reviews-note {
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+      opacity: 0.85;
+    }
+
+    @media(max-width: 860px) {
+      .reviews-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
 
     @media(max-width: 860px) {
@@ -272,42 +406,52 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience">
-      <h2 data-aos="fade-up">Experience</h2>
+<section id="experience">
+  <h2 data-aos="fade-up" style="margin-bottom: 1.5rem;">Experience</h2>
 
-      <div class="timeline">
+  <div class="timeline">
 
-        <div class="timeline-item" data-aos="fade-right">
-          <div class="timeline-dot"></div>
-          <div class="timeline-role">Software Developer — Modeling & Simulation</div>
-          <div class="timeline-company">Newport News Shipbuilding (HII NNS) · 2025</div>
-          <div class="timeline-desc">
-            Building secure client-server features for U.S. Navy aircraft-carrier simulation systems using C#, .NET, C++, and Azure DevOps.
-          </div>
+    <!-- EXPERIENCE ITEM -->
+    <div class="timeline-item" data-aos="fade-right">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-role">Software Developer — Modeling & Simulation</div>
+        <div class="timeline-company">Newport News Shipbuilding (HII NNS) · 2025</div>
+        <div class="timeline-desc">
+          Building secure client-server features for U.S. Navy aircraft-carrier simulation systems using 
+          C#, .NET, C++, Azure DevOps pipelines, and performance-optimized deployments.
         </div>
-
-        <div class="timeline-item" data-aos="fade-right">
-          <div class="timeline-dot"></div>
-          <div class="timeline-role">Research Assistant — Physics-Informed ML</div>
-          <div class="timeline-company">Hume Center · Virginia Tech · 2024</div>
-          <div class="timeline-desc">
-            Worked on PINNs, Neural Operators, Digital Twins, and CUDA-accelerated simulations using NVIDIA Modulus.
-          </div>
-        </div>
-
-        <div class="timeline-item" data-aos="fade-right">
-          <div class="timeline-dot"></div>
-          <div class="timeline-role">Cybersecurity Risk Advisory Intern</div>
-          <div class="timeline-company">Baker Tilly · 2024</div>
-          <div class="timeline-desc">
-            SOX, CMMC, NIST audits, security testing, and AI advisory for Higher-Ed institutions.
-          </div>
-        </div>
-
       </div>
-    </section>
+    </div>
 
-    <!-- PROJECTS -->
+    <!-- EXPERIENCE ITEM -->
+    <div class="timeline-item" data-aos="fade-right">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-role">Research Assistant — Physics-Informed ML</div>
+        <div class="timeline-company">Hume Center · Virginia Tech · 2024</div>
+        <div class="timeline-desc">
+          Worked on PINNs, Neural Operators, Digital Twins, and CUDA-accelerated simulations using NVIDIA Modulus.
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE ITEM -->
+    <div class="timeline-item" data-aos="fade-right">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-role">Cybersecurity Risk Advisory Intern</div>
+        <div class="timeline-company">Baker Tilly · 2024</div>
+        <div class="timeline-desc">
+          Worked on SOX, CMMC, NIST audits and assisted with AI advisory for Higher-Ed institutions. 
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+        <!-- PROJECTS -->
     <section id="projects">
       <h2 data-aos="fade-up">Projects</h2>
 
@@ -335,92 +479,164 @@
     </section>
 
     <!-- CONNECTIONS -->
-<section id="connections">
+    <section id="connections">
   <h2 data-aos="fade-up">Connections</h2>
-  <p data-aos="fade-up">
-    A space for recommendations and words from people I've worked with.
-  </p>
 
-  <!-- Button to open review form -->
-  <div style="margin-top: 1rem;" data-aos="fade-up">
-    <a href="#leave-review" 
-       style="display:inline-block; padding:10px 20px; 
-              background:var(--accent); color:white; 
-              border-radius:8px; text-decoration:none;">
-      ✨ Leave a Review
-    </a>
-  </div>
-
-  <div id="leave-review" 
-       style="margin-top:2rem; padding:1.5rem; 
-              background:rgba(15,23,42,0.85); 
-              border:1px solid rgba(255,255,255,0.1); 
-              border-radius:10px;"
-       data-aos="fade-up">
-
-    <h3 style="margin-bottom:1rem;">Write a Review</h3>
-
-    <label>Name</label>
-    <input id="revName" type="text" 
-           placeholder="Your name"
-           style="width:100%; padding:10px; margin-bottom:10px;">
-
-    <label>Role / Company</label>
-    <input id="revRole" type="text" 
-           placeholder="Your role or company"
-           style="width:100%; padding:10px; margin-bottom:10px;">
-
-    <label>Your Review</label>
-    <textarea id="revText" 
-              placeholder="Write your review here..."
-              style="width:100%; padding:10px; height:120px; margin-bottom:15px;"></textarea>
-
-    <button onclick="generateSnippet()" 
-            style="padding:10px 18px; background:var(--accent); 
-                   color:white; border:none; border-radius:8px; cursor:pointer;">
-      Generate Snippet
-    </button>
-
-    <!-- Output box -->
-    <div id="snippetBox" 
-         style="margin-top:15px; padding:15px; 
-                background:#0f172a; border-radius:8px; 
-                border:1px solid rgba(255,255,255,0.1); 
-                display:none;">
-      <p style="color:var(--muted); font-size:0.85rem;">Copy this and send it to Shanoor:</p>
-      <pre id="snippetText" 
-           style="white-space:pre-wrap; color:white; font-size:0.9rem; margin-top:10px;"></pre>
+  <div class="reviews-wrapper" data-aos="fade-up">
+    <div class="reviews-header">
+      <p>
+        Reviews, kind words, and feedback from people I’ve worked with. 
+        This helps others understand how I collaborate and ship work.
+      </p>
+      <button class="review-btn" type="button" id="toggleReviewForm">
+        + Add a review
+      </button>
     </div>
+
+    <form class="review-form" id="reviewForm">
+      <div class="review-form-row">
+        <input
+          type="text"
+          id="reviewName"
+          placeholder="Your name"
+          required
+        />
+        <input
+          type="text"
+          id="reviewRole"
+          placeholder="Your role / how we worked together"
+          required
+        />
+      </div>
+      <textarea
+        id="reviewText"
+        placeholder="Write a short review or feedback..."
+        required
+      ></textarea>
+      <button type="submit">Save review</button>
+    </form>
+
+    <div class="reviews-list" id="reviewsList">
+      <!-- Reviews will be injected here by JavaScript -->
+    </div>
+
+    <p class="reviews-note">
+      Reviews are stored as JSON in your browser (localStorage) so you can see them again on this device.
+      For an official reference, you can also message me on LinkedIn or via email.
+    </p>
   </div>
 </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 data-aos="fade-up">Contact</h2>
+
+      <div class="contact-layout">
+
+        <div data-aos="fade-right">
+          <p>Email:</p>
+          <strong>Shanoor_1220@outlook.com</strong>
+          <p style="margin-top: 1rem;">LinkedIn:</p>
+          <strong>linkedin.com/in/yourhandle</strong>
+        </div>
+
+        <form data-aos="fade-left">
+          <input type="text" placeholder="Your name" style="width:100%; padding:10px; margin-bottom:10px;">
+          <input type="email" placeholder="Your email" style="width:100%; padding:10px; margin-bottom:10px;">
+          <textarea placeholder="Message" style="width:100%; padding:10px; height:120px;"></textarea>
+          <button style="margin-top:10px; padding:10px 20px; background:var(--accent); color:white; border:none; border-radius:8px;">Send</button>
+        </form>
+
+      </div>
+    </section>
+
   </main>
 
   <footer>
     © 2025 · Built by Shanoor Verma — AI · Cloud · Software Engineering
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init({ duration: 800, once: true });
+
+    // ---- Simple JSON-backed review system using localStorage ----
+    const reviewForm = document.getElementById("reviewForm");
+    const toggleReviewFormBtn = document.getElementById("toggleReviewForm");
+    const reviewsList = document.getElementById("reviewsList");
+
+    function getStoredReviews() {
+      try {
+        const raw = localStorage.getItem("shanoorReviews");
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        console.error("Could not parse stored reviews", e);
+        return [];
+      }
+    }
+
+    function saveReviews(reviews) {
+      localStorage.setItem("shanoorReviews", JSON.stringify(reviews));
+    }
+
+    function renderReviews() {
+      const reviews = getStoredReviews();
+      reviewsList.innerHTML = "";
+
+      if (!reviews.length) {
+        reviewsList.innerHTML =
+          '<p style="font-size:0.9rem;color:var(--muted);">No reviews yet. Be the first to add one!</p>';
+        return;
+      }
+
+      reviews.forEach((r) => {
+        const card = document.createElement("div");
+        card.className = "review-card";
+        card.innerHTML = `
+          <div class="review-meta">
+            ${r.name} <span>· ${r.role}</span>
+          </div>
+          <div class="review-text">
+            ${r.text}
+          </div>
+        `;
+        reviewsList.appendChild(card);
+      });
+    }
+
+    if (toggleReviewFormBtn && reviewForm) {
+      toggleReviewFormBtn.addEventListener("click", () => {
+        const isVisible = reviewForm.style.display === "block";
+        reviewForm.style.display = isVisible ? "none" : "block";
+        toggleReviewFormBtn.textContent = isVisible ? "+ Add a review" : "Close";
+      });
+
+      reviewForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("reviewName").value.trim();
+        const role = document.getElementById("reviewRole").value.trim();
+        const text = document.getElementById("reviewText").value.trim();
+
+        if (!name || !role || !text) return;
+
+        const reviews = getStoredReviews();
+        reviews.unshift({ name, role, text, createdAt: new Date().toISOString() });
+        saveReviews(reviews);
+        renderReviews();
+
+        reviewForm.reset();
+        reviewForm.style.display = "none";
+        toggleReviewFormBtn.textContent = "+ Add a review";
+      });
+    }
+
+    // Initial render on page load
+    renderReviews();
   </script>
-<script>
-function generateSnippet() {
-  const name = document.getElementById("revName").value.trim();
-  const role = document.getElementById("revRole").value.trim();
-  const text = document.getElementById("revText").value.trim();
-
-  if (!name || !role || !text) {
-    alert("Please fill in all fields.");
-    return;
-  }
-
-  const snippet = `"${text}"\n— ${name}, ${role}`;
-  
-  document.getElementById("snippetText").textContent = snippet;
-  document.getElementById("snippetBox").style.display = "block";
-}
-</script>
-
 </body>
 </html>
 
+
+</body>
+</html>
